@@ -1,1 +1,0 @@
-export {default as FinancialReports} from 'financial/pages/FinancialReports'
