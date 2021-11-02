@@ -2,8 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 
-const Navigation = () => (
-    <>
+export default function Navigation (){
+    return(<>
     <Nav>
         <NavList>
             <NavItem><Link to = '/admin-page'>AdminPage</Link></NavItem>
@@ -13,10 +13,8 @@ const Navigation = () => (
             <NavItem><Link to = '/financial-reports'>FinancialReports</Link></NavItem>
         </NavList>
     </Nav>
-    </>
-)
-
-export default Navigation;
+    </>)
+}
 
 const Nav = styled.div`
     text-align: center;

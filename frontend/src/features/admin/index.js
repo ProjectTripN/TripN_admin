@@ -1,1 +1,1 @@
-export { default as AdminLogin } from ''
+export {default as AdminLogin} from 'features/admin/components/AdminLogin'

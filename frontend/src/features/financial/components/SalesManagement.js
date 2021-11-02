@@ -3,27 +3,26 @@ import { Header, Navigation } from 'features/common/index'
 import styled from 'styled-components'
 import {Chart1, Chart2, Chart3, Chart4, ChartData, ChartData2, ChartData3, ChartData4} from 'features/financial/index'
 
-
-
-export default function DashBoard () {
-    return (<>
+export default function SalesManagement () {
+    return(<>
     <Header/>
     <ChartTable>
         <Charttr>
             <td rowspan="2" style={{border: "1px solid black"}}><Navigation/></td>
             <Charttd>
-                <Chartdiv><Chart1 data= {ChartData}/></Chartdiv>
+                <Chartdiv><Chart4 data= {ChartData4}/></Chartdiv>
                 </Charttd>
             <Charttd>
-                <Chartdiv><Chart2 data= {ChartData2}/></Chartdiv>
+                <Chartdiv><Chart3 data= {ChartData3}/></Chartdiv>
+                
             </Charttd>
         </Charttr>
         <Charttr>
             <Charttd>
-                <Chartdiv><Chart3 data= {ChartData3}/></Chartdiv>
+                <Chartdiv><Chart2 data= {ChartData2}/></Chartdiv>
                 </Charttd>
             <Charttd>
-                <Chartdiv><Chart4 data= {ChartData4}/></Chartdiv>
+                <Chartdiv><Chart1 data= {ChartData}/></Chartdiv>
                 </Charttd>
         </Charttr>
     </ChartTable>
@@ -40,11 +39,11 @@ const Charttr = styled.tr`
     height:100%;
     margin:auto;
     border:1px solid black;
-    
 `
 
 const Charttd = styled.td`
     padding:1%;
+    margin:auto;
     border: 1px solid black;
 `
 

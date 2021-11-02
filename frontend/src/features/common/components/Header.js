@@ -3,14 +3,12 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 
-const Header = () => {
+export default function Header () {
     return(<>
     <SideBar><Button>Login</Button></SideBar>
     <Logo><Link to='/admin-page' style={{ textDecoration: 'none', color: 'black' }}>Trip N</Link></Logo>
     </>)
 }
-
-export default Header;
 
 const Logo = styled.h1`
     height: auto;
