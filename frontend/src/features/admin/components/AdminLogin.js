@@ -9,12 +9,12 @@ import { Navigation } from 'features/common';
 import { loginPage } from '../reducers/adminSlice';
 
 export default function AdminLogin() {
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const { handleSubmit, formState: { errors } } = useForm();
 
   return (<>
-      <title>Login | Admin Page</title>
+    <title>Login | Admin Page</title>
     <Box
       sx={{
         backgroundColor: 'background.default',
@@ -46,7 +46,7 @@ export default function AdminLogin() {
             values
           }) => (
             <form method='POST'
-              onSubmit={handleSubmit(async (data) => {await dispatch(loginPage(data))})}>
+              onSubmit={handleSubmit(async (data) => { await dispatch(loginPage(data)) })}>
               <Box sx={{ mb: 3 }}>
                 <Typography
                   color="textPrimary"
