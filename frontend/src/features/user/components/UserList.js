@@ -1,39 +1,160 @@
-import React from 'react'
-import { Navigation, Header } from 'features/common'
-import styled from 'styled-components'
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import moment from 'moment';
+import PerfectScrollbar from 'react-perfect-scrollbar';
+import {
+  Box,
+  Card,
+  Checkbox,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TablePagination,
+  TableRow,
+  Typography
+} from '@material-ui/core';
 
-const UserList = () => {
-    return(<>
-    <Header/>
-    <Table>
-        <Tr>
-            <td rowspan="2" style={{width: "15%",border: "1px solid black"}}><Navigation/></td>
-            <td colSpan="2" style={{border: '1px solid black'}}>
-                <label>이름:<input type="text" title="search"/></label><br/><br/>
-                <label>생년월일:<input type="text" title="search" placeholder="No Hyphen"/></label><br/><br/>
-                <label>휴대폰번호:<input type="tel" id="phone" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="No Hyphen"/></label>
-                <p><input type="submit" value="search"/></p>
-            </td>
-        </Tr>
-        <Tr>
-            <Chartth>회원 기본정보</Chartth>
-            <Chartth>회원 상세정보</Chartth>
-        </Tr>
-    </Table>
-    </>)
-}
+export default function UserList ({ users, ...rest }) {
+  const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
+  const [limit, setLimit] = useState(10);
+  const [page, setPage] = useState(0);
 
-export default UserList
+  const handleSelectAll = (event) => {
+    let newSelectedCustomerIds;
 
-const Table = styled.table`
-    width: 98%;
-    height:781px;
-`
+    if (event.target.checked) {
+      newSelectedCustomerIds = users.map((customer) => customer.id);
+    } else {
+      newSelectedCustomerIds = [];
+    }
 
-const Tr = styled.tr`
-    height:50%;
-`
+    setSelectedCustomerIds(newSelectedCustomerIds);
+  };
 
-const Chartth = styled.th`
-    border: 1px solid black;
-`
+  const handleSelectOne = (event, id) => {
+    const selectedIndex = selectedCustomerIds.indexOf(id);
+    let newSelectedCustomerIds = [];
+
+    if (selectedIndex === -1) {
+      newSelectedCustomerIds = newSelectedCustomerIds.concat(selectedCustomerIds, id);
+    } else if (selectedIndex === 0) {
+      newSelectedCustomerIds = newSelectedCustomerIds.concat(selectedCustomerIds.slice(1));
+    } else if (selectedIndex === selectedCustomerIds.length - 1) {
+      newSelectedCustomerIds = newSelectedCustomerIds.concat(selectedCustomerIds.slice(0, -1));
+    } else if (selectedIndex > 0) {
+      newSelectedCustomerIds = newSelectedCustomerIds.concat(
+        selectedCustomerIds.slice(0, selectedIndex),
+        selectedCustomerIds.slice(selectedIndex + 1)
+      );
+    }
+
+    setSelectedCustomerIds(newSelectedCustomerIds);
+  };
+
+  const handleLimitChange = (event) => {
+    setLimit(event.target.value);
+  };
+
+  const handlePageChange = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  return (
+    <Card {...rest}>
+      <PerfectScrollbar>
+        <Box sx={{ minWidth: 1050 }}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell padding="checkbox">
+                  <Checkbox
+                    checked={selectedCustomerIds.length === users.length}
+                    color="primary"
+                    indeterminate={
+                      selectedCustomerIds.length > 0
+                      && selectedCustomerIds.length < users.length
+                    }
+                    onChange={handleSelectAll}
+                  />
+                </TableCell>
+                <TableCell>
+                  Name
+                </TableCell>
+                <TableCell>
+                  Email
+                </TableCell>
+                <TableCell>
+                  Location
+                </TableCell>
+                <TableCell>
+                  Phone
+                </TableCell>
+                <TableCell>
+                  Registration date
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {users.slice(0, limit).map((customer) => (
+                <TableRow
+                  hover
+                  key={customer.id}
+                  selected={selectedCustomerIds.indexOf(customer.id) !== -1}
+                >
+                  <TableCell padding="checkbox">
+                    <Checkbox
+                      checked={selectedCustomerIds.indexOf(customer.id) !== -1}
+                      onChange={(event) => handleSelectOne(event, customer.id)}
+                      value="true"
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <Box
+                      sx={{
+                        alignItems: 'center',
+                        display: 'flex'
+                      }}
+                    >
+                      <Typography
+                        color="textPrimary"
+                        variant="body1"
+                      >
+                        {customer.name}
+                      </Typography>
+                    </Box>
+                  </TableCell>
+                  <TableCell>
+                    {customer.email}
+                  </TableCell>
+                  <TableCell>
+                    {`${customer.address.city}, ${customer.address.state}, ${customer.address.country}`}
+                  </TableCell>
+                  <TableCell>
+                    {customer.phone}
+                  </TableCell>
+                  <TableCell>
+                    {moment(customer.createdAt).format('DD/MM/YYYY')}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Box>
+      </PerfectScrollbar>
+      <TablePagination
+        component="div"
+        count={users.length}
+        onPageChange={handlePageChange}
+        onRowsPerPageChange={handleLimitChange}
+        page={page}
+        rowsPerPage={limit}
+        rowsPerPageOptions={[5, 10, 25]}
+      />
+    </Card>
+  );
+};
+
+UserList.propTypes = {
+  customers: PropTypes.array.isRequired
+};

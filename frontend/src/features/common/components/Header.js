@@ -1,12 +1,20 @@
 import React from 'react';
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 
 const Header = () => {
+    const navigate = useNavigate();
+
     return(<>
-    <SideBar><Button >Log Out</Button></SideBar>
-    <Logo><Link to='/admin-login' style={{ textDecoration: 'none', color: 'black' }}>Trip N</Link></Logo>
+    <SideBar><Button onClick={e => {
+            e.preventDefault()
+            e.stopPropagation()
+            localStorage.clear(e)
+            navigate('/an/admin-login')
+        }}>Log Out</Button></SideBar>
+    <Logo><Link to='/an/admin-login' style={{ textDecoration: 'none', color: 'black' }}>Trip N</Link></Logo>
     </>)
 }
 

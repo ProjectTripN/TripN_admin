@@ -1,58 +1,101 @@
 import React from 'react'
-import { Navigation, Header } from 'features/common'
-import styled from 'styled-components'
-import {Chart1, Chart2, Chart3, Chart4, ChartData, ChartData2, ChartData3, ChartData4} from 'features/common'
+import { Helmet } from 'react-helmet';
+import { Box, Container, Grid } from '@material-ui/core';
+import { Budget, LatestOrders, LatestProducts, Sales, TasksProgress, TotalCustomers, TotalProfit, TrafficByDevice } from 'features/common'
 
-
-
-const DashBoard = () => {
-    return (<>
-    <Header/>
-    <ChartTable>
-        <Charttr>
-            <td rowspan="2" style={{border: "1px solid black"}}><Navigation/></td>
-            <Charttd>
-                <Chartdiv><Chart1 data= {ChartData}/></Chartdiv>
-                </Charttd>
-            <Charttd>
-                <Chartdiv><Chart2 data= {ChartData2}/></Chartdiv>
-            </Charttd>
-        </Charttr>
-        <Charttr>
-            <Charttd>
-                <Chartdiv><Chart3 data= {ChartData3}/></Chartdiv>
-                </Charttd>
-            <Charttd>
-                <Chartdiv><Chart4 data= {ChartData4}/></Chartdiv>
-                </Charttd>
-        </Charttr>
-    </ChartTable>
-    </>)
-}
-
-export default DashBoard
-
-const ChartTable = styled.table`
-    width: 98%;
-    height:700px;
-`
-
-const Charttr = styled.tr`
-    width:100%;
-    height:100%;
-    margin:auto;
-    border:1px solid black;
-    
-`
-
-const Charttd = styled.td`
-    padding:1%;
-    border: 1px solid black;
-`
-
-const Chartdiv = styled.div`
-    display:block;
-    margin:auto;
-    width:500px;
-    height:348px;
-`
+const Dashboard = () => (
+    <>
+      <Helmet>
+        <title>Dashboard | Material Kit</title>
+      </Helmet>
+      <Box
+        sx={{
+          backgroundColor: 'background.default',
+          minHeight: '100%',
+          py: 3
+        }}
+      >
+        <Container maxWidth={false}>
+          <Grid
+            container
+            spacing={3}
+          >
+            <Grid
+              item
+              lg={3}
+              sm={6}
+              xl={3}
+              xs={12}
+            >
+              <Budget />
+            </Grid>
+            <Grid
+              item
+              lg={3}
+              sm={6}
+              xl={3}
+              xs={12}
+            >
+              <TotalCustomers />
+            </Grid>
+            <Grid
+              item
+              lg={3}
+              sm={6}
+              xl={3}
+              xs={12}
+            >
+              <TasksProgress />
+            </Grid>
+            <Grid
+              item
+              lg={3}
+              sm={6}
+              xl={3}
+              xs={12}
+            >
+              <TotalProfit sx={{ height: '100%' }} />
+            </Grid>
+            <Grid
+              item
+              lg={8}
+              md={12}
+              xl={9}
+              xs={12}
+            >
+              <Sales />
+            </Grid>
+            <Grid
+              item
+              lg={4}
+              md={6}
+              xl={3}
+              xs={12}
+            >
+              <TrafficByDevice sx={{ height: '100%' }} />
+            </Grid>
+            <Grid
+              item
+              lg={4}
+              md={6}
+              xl={3}
+              xs={12}
+            >
+              <LatestProducts sx={{ height: '100%' }} />
+            </Grid>
+            <Grid
+              item
+              lg={8}
+              md={12}
+              xl={9}
+              xs={12}
+            >
+              <LatestOrders />
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+    </>
+  );
+  
+  export default Dashboard;

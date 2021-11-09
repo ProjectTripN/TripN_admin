@@ -5,11 +5,13 @@ import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
+import {GlobalStyles} from 'features/common';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+    <GlobalStyles />
       <BrowserRouter>
         <App />
       </BrowserRouter>
