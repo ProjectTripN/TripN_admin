@@ -21,7 +21,7 @@ export default function AdminLogin () {
   return (
     <>
       <Helmet>
-        <title>Login | Material Kit</title>
+        <title>TripN Admin</title>
       </Helmet>
       <Box
         sx={{
