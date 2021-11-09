@@ -1,27 +1,23 @@
 import React from 'react'
-import { Route, Redirect, Switch } from 'react-router-dom';
-import { AdminLogin } from 'features/admin';
+import { Route, Routes } from 'react-router-dom';
 import { DashBoard } from 'features/common';
 import { UserList } from 'features/user';
 import { SalesManagement, FinancialReports } from 'features/financial';
-import { BrowserRouter as Router } from 'react-router-dom'
-
+import { AdminLogin } from 'features/admin';
 
 const App = () => {
-  return (<>
-  <div className="App">
-    <Router>
-      <Switch>
-        <Route exact path='/' component={AdminLogin} />
-        <Redirect from='/admin-home' to={'/'} />
-        <Route exact path='/dash-board' component={DashBoard} />
-        <Route exact path='/user-list' component={UserList} />
-        <Route exact path='/sales-management' component={SalesManagement} />
-        <Route exact path='/financial-reports' component={FinancialReports} />
-      </Switch>
-    </Router>
-  </div>
-</>)
+  return (
+    <div className="App">
+      <Routes>
+        <Route path='/' element={<AdminLogin />} />
+        <Route path='/an/admin-login' element={<AdminLogin />} />
+        <Route path='/an/dash-board' element={<DashBoard />} />
+        <Route path='/an/user-list' element={<UserList />} />
+        <Route path='/an/sales-management' element={<SalesManagement />} />
+        <Route path='/an/financial-reports' element={<FinancialReports />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;

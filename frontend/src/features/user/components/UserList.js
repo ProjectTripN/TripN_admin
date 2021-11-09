@@ -1,22 +1,8 @@
-import { Header, Navigation } from 'features/common/index'
+import React from 'react'
+import { Navigation, Header } from 'features/common'
 import styled from 'styled-components'
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { list } from 'features/user/reducer/userSlice'
 
-export default function UserList () {
-    const dispatch = useDispatch()
-
-    const users = useSelector(state => state.user.usersState);
-    const type = useSelector(state => state.user.type)
-    const keyword = useSelector( state => state.user.keyword)
-    const page = 1;
-    
-    useEffect(() => {
-      const param = {type: type, keyword: keyword, page: page}
-      dispatch(list(param))
-    },[]);
-
+const UserList = () => {
     return(<>
     <Header/>
     <Table>
@@ -36,6 +22,8 @@ export default function UserList () {
     </Table>
     </>)
 }
+
+export default UserList
 
 const Table = styled.table`
     width: 98%;

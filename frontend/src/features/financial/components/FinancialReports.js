@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Header, Navigation } from 'features/common/index'
+import { Header, Navigation } from 'features/common'
 
-export default function FinancialReports () {
+const FinancialReports = () => {
     return(<>
     <Header/>
     <ChartTable>
@@ -15,6 +15,8 @@ export default function FinancialReports () {
     </ChartTable>
     </>)
 }
+
+export default FinancialReports
 
 const ChartTable = styled.table`
     width: 98%;

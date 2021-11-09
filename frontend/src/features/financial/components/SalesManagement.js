@@ -1,9 +1,9 @@
 import React from 'react'
-import { Header, Navigation } from 'features/common/index'
+import { Navigation, Header } from 'features/common'
 import styled from 'styled-components'
-import {Chart1, Chart2, Chart3, Chart4, ChartData, ChartData2, ChartData3, ChartData4} from 'features/financial/index'
+import {Chart1, Chart2, Chart3, Chart4, ChartData, ChartData2, ChartData3, ChartData4} from 'features/common'
 
-export default function SalesManagement () {
+const SalesManagement = () => {
     return(<>
     <Header/>
     <ChartTable>
@@ -28,6 +28,8 @@ export default function SalesManagement () {
     </ChartTable>
     </>)
 }
+
+export default SalesManagement
 
 const ChartTable = styled.table`
     width: 98%;

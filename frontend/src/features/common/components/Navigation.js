@@ -2,19 +2,20 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 
-export default function Navigation (){
-    return(<>
+const Navigation = () => (
+    <>
     <Nav>
         <NavList>
-            <NavItem><Link to = '/admin-page'>AdminPage</Link></NavItem>
-            <NavItem><Link to = '/dash-board'>DashBoard</Link></NavItem>
-            <NavItem><Link to = '/user-list'>UserList</Link></NavItem>
-            <NavItem><Link to = '/sales-management'>SalesManagement</Link></NavItem>
-            <NavItem><Link to = '/financial-reports'>FinancialReports</Link></NavItem>
+            <NavItem><Link to = '/an/dash-board'>DashBoard</Link></NavItem>
+            <NavItem><Link to = '/an/user-list'>UserList</Link></NavItem>
+            <NavItem><Link to = '/an/sales-management'>SalesManagement</Link></NavItem>
+            <NavItem><Link to = '/an/financial-reports'>FinancialReports</Link></NavItem>
         </NavList>
     </Nav>
-    </>)
-}
+    </>
+)
+
+export default Navigation;
 
 const Nav = styled.div`
     text-align: center;
@@ -28,4 +29,5 @@ const NavList = styled.ul`
 const NavItem = styled.li`
     line-height:60px;
     display: flex;
+
 `
