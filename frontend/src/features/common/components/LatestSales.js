@@ -10,7 +10,7 @@ import {
   colors
 } from '@material-ui/core';
 
-const Sales = (props) => {
+const LatestSales = (props) => {
   const theme = useTheme();
 
   const data = {
@@ -122,4 +122,4 @@ const Sales = (props) => {
   );
 };
 
-export default Sales;
+export default LatestSales;

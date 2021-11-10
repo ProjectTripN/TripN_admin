@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navigation, Header } from 'features/common'
 import styled from 'styled-components'
-import {Chart1, Chart2, Chart3, Chart4, ChartData, ChartData2, ChartData3, ChartData4} from 'features/common'
+import {Chart1, Chart2, Chart3, Chart4, ChartData, ChartData2, ChartData3, ChartData4} from 'features/financial'
 
 const SalesManagement = () => {
     return(<>

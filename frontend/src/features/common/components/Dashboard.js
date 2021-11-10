@@ -1,12 +1,12 @@
 import React from 'react'
 import { Helmet } from 'react-helmet';
 import { Box, Container, Grid } from '@material-ui/core';
-import { Budget, LatestOrders, Sales, TasksProgress, TotalCustomers, TotalProfit, TrafficByDevice } from 'features/common'
+import { Budget, LatestOrders, LatestSales, TotalCustomers, TotalProfit, TrafficByDevice } from 'features/common'
 
 const Dashboard = () => (
     <>
       <Helmet>
-        <title>Dashboard | Material Kit</title>
+        <title>Dashboard | TripN Admin</title>
       </Helmet>
       <Box
         sx={{
@@ -22,37 +22,28 @@ const Dashboard = () => (
           >
             <Grid
               item
-              lg={3}
-              sm={6}
-              xl={3}
-              xs={12}
+              lg={4}
+              sm={8}
+              xl={4}
+              xs={16}
             >
               <Budget />
             </Grid>
             <Grid
               item
-              lg={3}
-              sm={6}
-              xl={3}
-              xs={12}
+              lg={4}
+              sm={8}
+              xl={4}
+              xs={16}
             >
               <TotalCustomers />
             </Grid>
             <Grid
               item
-              lg={3}
-              sm={6}
-              xl={3}
-              xs={12}
-            >
-              <TasksProgress />
-            </Grid>
-            <Grid
-              item
-              lg={3}
-              sm={6}
-              xl={3}
-              xs={12}
+              lg={4}
+              sm={8}
+              xl={4}
+              xs={16}
             >
               <TotalProfit sx={{ height: '100%' }} />
             </Grid>
@@ -63,7 +54,7 @@ const Dashboard = () => (
               xl={9}
               xs={12}
             >
-              <Sales />
+              <LatestSales />
             </Grid>
             <Grid
               item
