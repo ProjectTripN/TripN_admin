@@ -12,12 +12,8 @@ import {
   Typography
 } from '@material-ui/core';
 import {
-  AlertCircle as AlertCircleIcon,
   BarChart as BarChartIcon,
-  Lock as LockIcon,
-  Settings as SettingsIcon,
   ShoppingBag as ShoppingBagIcon,
-  User as UserIcon,
   UserPlus as UserPlusIcon,
   Users as UsersIcon
 } from 'react-feather';
@@ -31,44 +27,24 @@ const user = {
 
 const items = [
   {
-    href: '/app/dashboard',
+    href: '/an/dash-board',
     icon: BarChartIcon,
     title: 'Dashboard'
   },
   {
-    href: '/app/customers',
+    href: '/an/user-list',
     icon: UsersIcon,
-    title: 'Customers'
+    title: 'UserList'
   },
   {
-    href: '/app/products',
+    href: '/an/sales-management',
     icon: ShoppingBagIcon,
-    title: 'Products'
+    title: 'SalesManagement'
   },
   {
-    href: '/app/account',
-    icon: UserIcon,
-    title: 'Account'
-  },
-  {
-    href: '/app/settings',
-    icon: SettingsIcon,
-    title: 'Settings'
-  },
-  {
-    href: '/login',
-    icon: LockIcon,
-    title: 'Login'
-  },
-  {
-    href: '/register',
+    href: '/an/financial-reports',
     icon: UserPlusIcon,
-    title: 'Register'
-  },
-  {
-    href: '/404',
-    icon: AlertCircleIcon,
-    title: 'Error'
+    title: 'FinancialReports'
   }
 ];
 
@@ -141,19 +117,6 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
           p: 2
         }}
       >
-        <Typography
-          align="center"
-          gutterBottom
-          variant="h4"
-        >
-          Need more?
-        </Typography>
-        <Typography
-          align="center"
-          variant="body2"
-        >
-          Upgrade to PRO version and access 20 more screens
-        </Typography>
         <Box
           sx={{
             display: 'flex',

@@ -3,7 +3,6 @@ import { v4 as uuid } from 'uuid';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
   Box,
-  Button,
   Card,
   CardHeader,
   Chip,

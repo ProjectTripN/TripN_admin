@@ -1,10 +1,11 @@
 import React from 'react'
 import { Helmet } from 'react-helmet';
 import { Box, Container, Grid } from '@material-ui/core';
-import { Budget, LatestOrders, LatestSales, TotalCustomers, TotalProfit, TrafficByDevice } from 'features/common'
+import { Budget, DashboardLayout, LatestOrders, LatestSales, MainLayout, MainNavbar, Navigation, TotalCustomers, TotalProfit, TrafficByDevice } from 'features/adminCommon'
 
 const Dashboard = () => (
     <>
+      <DashboardLayout/>
       <Helmet>
         <title>Dashboard | TripN Admin</title>
       </Helmet>

@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { Box, Container } from '@material-ui/core';
 import users from '__mocks__/users';
-import {UserList, UserListToolbar} from 'features/user'
+import {UserList, UserListToolbar} from 'features/adminUser'
 
 export default function CustomerList (){
   return(

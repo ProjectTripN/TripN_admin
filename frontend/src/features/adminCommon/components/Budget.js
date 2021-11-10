@@ -9,7 +9,6 @@ import {
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import MoneyIcon from '@material-ui/icons/Money';
 import { red } from '@material-ui/core/colors';
-import { styled } from '@material-ui/core/styles';
 
 const Budget = (props) => (
   <Card
