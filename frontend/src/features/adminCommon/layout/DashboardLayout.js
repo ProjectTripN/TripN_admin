@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { styled } from '@material-ui/core/styles';
-import {DashboardNavbar, DashboardSidebar, Navigation} from 'features/adminCommon';
+import {DashboardNavbar, DashboardSidebar} from 'features/adminCommon';
 
 
 const DashboardLayoutRoot = styled('div')(
