@@ -110,13 +110,6 @@ const LatestOrders = (props) => (
         </Table>
       </Box>
     </PerfectScrollbar>
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'flex-end'
-      }}
-    >
-    </Box>
   </Card>
 );
 

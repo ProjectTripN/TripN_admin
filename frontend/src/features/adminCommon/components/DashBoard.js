@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet';
 import { Box, Container, Grid } from '@material-ui/core';
-import { Budget, LatestOrders, LatestSales, TotalCustomers, TotalProfit, TrafficByDevice, DashboardSidebar, TotalProfit2 } from 'features/adminCommon'
+import { Budget, LatestOrders, LatestSales, TotalCustomers, TotalProfit, TrafficByDevice, DashboardSidebar, TotalProfit2, Navigation, NavItem } from 'features/adminCommon'
 import AppAppBar from '../layout/AppAppBar';
 import 'features/adminCommon/components/grid.css'
 
@@ -20,10 +20,11 @@ export default function Dashboard() {
         }}
       >
         <div className='container' >
+          <Navigation/>
           <Container maxWidth={false} className='item1' >
             <Grid
               container
-              spacing={3}
+              spacing={1}
             >
               <Grid
                 item

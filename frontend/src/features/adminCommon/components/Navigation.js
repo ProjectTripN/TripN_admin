@@ -19,15 +19,16 @@ export default Navigation;
 
 const Nav = styled.div`
     text-align: center;
+    padding:2%;
 `
 
 const NavList = styled.ul`
     width: 100%;
-    text-align: center;
+
 `
 
 const NavItem = styled.li`
     line-height:60px;
-    display: flex;
+    
 
 `
