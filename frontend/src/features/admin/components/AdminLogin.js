@@ -126,7 +126,7 @@ export default function AdminLogin() {
                                     type="submit"
                                     variant="contained"
                                 >
-                                    Sign in now
+                                    Login
                                 </Button>
                             </Box>
                         </form>
