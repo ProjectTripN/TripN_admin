@@ -5,19 +5,15 @@ import {
   Grid,
   Typography
 } from '@material-ui/core';
-import MoneyIcon from '@material-ui/icons/Money';
-import { red } from '@material-ui/core/colors';
+import { indigo } from '@material-ui/core/colors';
 
-const Budget = (props) => (
-  <Card
-    sx={{ height: '100%' }}
-    {...props}
-  >
+const TotalProfit = (props) => (
+  <Card {...props}>
     <CardContent>
       <Grid
         container
         spacing={3}
-        sx={{ justifyContent: 'center' }}
+        sx={{ justifyContent: 'space-between' }}
       >
         <Grid item>
           <Typography
@@ -25,24 +21,23 @@ const Budget = (props) => (
             gutterBottom
             variant="h6"
           >
-            BUDGET
+            TOTAL PROFIT
           </Typography>
           <Typography
             color="textPrimary"
             variant="h4"
           >
-            $24,000
+            $23,200
           </Typography>
         </Grid>
         <Grid item>
           <Avatar
             sx={{
-              backgroundColor: red[600],
+              backgroundColor: indigo[600],
               height: 56,
               width: 56
             }}
           >
-            <MoneyIcon />
           </Avatar>
         </Grid>
       </Grid>
@@ -50,4 +45,4 @@ const Budget = (props) => (
   </Card>
 );
 
-export default Budget;
+export default TotalProfit;

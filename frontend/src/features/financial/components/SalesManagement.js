@@ -1,11 +1,11 @@
 import React from 'react'
-import { Navigation, Header } from 'features/adminCommon'
+import { Navigation, AppAppBar } from 'features/adminCommon'
 import styled from 'styled-components'
 import {Chart1, Chart2, Chart3, Chart4, ChartData, ChartData2, ChartData3, ChartData4} from 'features/financial'
 
 const SalesManagement = () => {
     return(<>
-    <Header/>
+    <AppAppBar/>
     <ChartTable>
         <Charttr>
             <td rowspan="2" style={{border: "1px solid black"}}><Navigation/></td>
@@ -14,7 +14,6 @@ const SalesManagement = () => {
                 </Charttd>
             <Charttd>
                 <Chartdiv><Chart3 data= {ChartData3}/></Chartdiv>
-                
             </Charttd>
         </Charttr>
         <Charttr>

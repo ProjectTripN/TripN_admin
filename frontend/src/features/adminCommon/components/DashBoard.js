@@ -1,11 +1,14 @@
 import React from 'react'
 import { Helmet } from 'react-helmet';
 import { Box, Container, Grid } from '@material-ui/core';
-import { Budget, DashboardLayout, LatestOrders, LatestSales, TotalCustomers, TotalProfit, TrafficByDevice } from 'features/adminCommon'
+import { Budget, LatestOrders, LatestSales, TotalCustomers, TotalProfit, TrafficByDevice, DashboardSidebar, TotalProfit2 } from 'features/adminCommon'
+import AppAppBar from '../layout/AppAppBar';
+import 'features/adminCommon/components/grid.css'
 
-const Dashboard = () => (
+export default function Dashboard() {
+  return (
     <>
-      <DashboardLayout/>
+      <AppAppBar />
       <Helmet>
         <title>Dashboard | TripN Admin</title>
       </Helmet>
@@ -16,69 +19,79 @@ const Dashboard = () => (
           py: 3
         }}
       >
-        <Container maxWidth={false}>
-          <Grid
-            container
-            spacing={3}
-          >
+        <div className='container' >
+          <Container maxWidth={false} className='item1' >
             <Grid
-              item
-              lg={4}
-              sm={8}
-              xl={4}
-              xs={16}
+              container
+              spacing={3}
             >
-              <Budget />
+              <Grid
+                item
+                lg={3}
+                sm={6}
+                xl={3}
+                xs={12}
+              >
+                <Budget />
+              </Grid>
+              <Grid
+                item
+                lg={3}
+                sm={6}
+                xl={3}
+                xs={12}
+              >
+                <TotalProfit2 />
+              </Grid>
+              <Grid
+                item
+                lg={3}
+                sm={6}
+                xl={3}
+                xs={12}
+              >
+                <TotalCustomers />
+              </Grid>
+              <Grid
+                item
+                lg={3}
+                sm={6}
+                xl={3}
+                xs={12}
+              >
+                <TotalProfit sx={{ height: '100%' }} />
+              </Grid>
+              <Grid
+                item
+                lg={8}
+                md={12}
+                xl={9}
+                xs={12}
+              >
+                <LatestSales />
+              </Grid>
+              <Grid
+                item
+                lg={4}
+                md={6}
+                xl={3}
+                xs={12}
+              >
+                <TrafficByDevice sx={{ height: '100%' }} />
+              </Grid>
+              <Grid
+                item
+                lg={12}
+                md={18}
+                xl={12}
+                xs={24}
+              >
+                <LatestOrders />
+              </Grid>
             </Grid>
-            <Grid
-              item
-              lg={4}
-              sm={8}
-              xl={4}
-              xs={16}
-            >
-              <TotalCustomers />
-            </Grid>
-            <Grid
-              item
-              lg={4}
-              sm={8}
-              xl={4}
-              xs={16}
-            >
-              <TotalProfit sx={{ height: '100%' }} />
-            </Grid>
-            <Grid
-              item
-              lg={8}
-              md={12}
-              xl={9}
-              xs={12}
-            >
-              <LatestSales />
-            </Grid>
-            <Grid
-              item
-              lg={4}
-              md={6}
-              xl={3}
-              xs={12}
-            >
-              <TrafficByDevice sx={{ height: '100%' }} />
-            </Grid>
-            <Grid
-              item
-              lg={12}
-              md={18}
-              xl={12}
-              xs={24}
-            >
-              <LatestOrders />
-            </Grid>
-          </Grid>
-        </Container>
+          </Container>
+        </div>
       </Box>
     </>
   );
-  
-  export default Dashboard;
+}

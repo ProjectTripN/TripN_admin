@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Header, Navigation } from 'features/adminCommon'
+import { AppAppBar, Navigation } from 'features/adminCommon'
 
 const FinancialReports = () => {
     return(<>
-    <Header/>
+    <AppAppBar/>
     <ChartTable>
         <Charttr>
             <td style={{width:'15%', border: "1px solid black"}}><Navigation/></td>

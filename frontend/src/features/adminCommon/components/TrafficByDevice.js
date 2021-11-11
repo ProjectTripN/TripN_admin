@@ -25,7 +25,7 @@ const TrafficByDevice = (props) => {
           colors.red[600],
           colors.orange[600]
         ],
-        borderWidth: 8,
+        borderWidth: 5,
         borderColor: colors.common.white,
         hoverBorderColor: colors.common.white
       }
@@ -34,7 +34,7 @@ const TrafficByDevice = (props) => {
   };
 
   const options = {
-    animation: false,
+    animation: true,
     cutoutPercentage: 80,
     layout: { padding: 0 },
     legend: {
@@ -70,7 +70,7 @@ const TrafficByDevice = (props) => {
     },
     {
       title: 'Mobile',
-      value: 23,
+      value: 22,
       icon: PhoneIcon,
       color: colors.orange[600]
     }
@@ -83,7 +83,7 @@ const TrafficByDevice = (props) => {
       <CardContent>
         <Box
           sx={{
-            height: 300,
+            height: 285,
             position: 'relative'
           }}
         >
@@ -95,8 +95,7 @@ const TrafficByDevice = (props) => {
         <Box
           sx={{
             display: 'flex',
-            justifyContent: 'center',
-            pt: 2
+            justifyContent: 'center'
           }}
         >
           {devices.map(({
@@ -108,7 +107,7 @@ const TrafficByDevice = (props) => {
             <Box
               key={title}
               sx={{
-                p: 1,
+                p: 3,
                 textAlign: 'center'
               }}
             >
@@ -121,7 +120,7 @@ const TrafficByDevice = (props) => {
               </Typography>
               <Typography
                 style={{ color }}
-                variant="h2"
+                variant="h4"
               >
                 {value}
                 %

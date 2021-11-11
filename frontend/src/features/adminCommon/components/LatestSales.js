@@ -39,7 +39,7 @@ const LatestSales = (props) => {
   };
 
   const options = {
-    animation: false,
+    animation: true,
     cornerRadius: 20,
     layout: { padding: 0 },
     legend: { display: false },

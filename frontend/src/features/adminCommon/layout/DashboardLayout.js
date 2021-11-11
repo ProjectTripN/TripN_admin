@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { styled } from '@material-ui/core/styles';
-import {DashboardNavbar, DashboardSidebar} from 'features/adminCommon';
+import { AppBar, DashboardSidebar } from 'features/adminCommon';
 
 
 const DashboardLayoutRoot = styled('div')(
@@ -43,7 +43,7 @@ const DashboardLayout = () => {
 
   return (
     <DashboardLayoutRoot>
-      <DashboardNavbar onMobileNavOpen={() => setMobileNavOpen(true)} />
+      <AppBar onMobileNavOpen={() => setMobileNavOpen(true)} />
       <DashboardSidebar
         onMobileClose={() => setMobileNavOpen(false)}
         openMobile={isMobileNavOpen}

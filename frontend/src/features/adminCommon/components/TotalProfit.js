@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core';
 import { indigo } from '@material-ui/core/colors';
 
-const TotalProfit = (props) => (
+const TotalProfit2 = (props) => (
   <Card {...props}>
     <CardContent>
       <Grid
@@ -25,7 +25,7 @@ const TotalProfit = (props) => (
           </Typography>
           <Typography
             color="textPrimary"
-            variant="h3"
+            variant="h4"
           >
             $23,200
           </Typography>
@@ -45,4 +45,4 @@ const TotalProfit = (props) => (
   </Card>
 );
 
-export default TotalProfit;
+export default TotalProfit2;
