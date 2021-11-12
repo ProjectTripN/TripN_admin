@@ -19,6 +19,8 @@
     "@testing-library/user-event": "^7.1.2",
     "chart.js": "^3.6.0",
     "chartjs-plugin-autocolors": "^0.0.4",
+    "date-fns": "^2.25.0",
+    "format": "^0.2.2",
     "formik": "^2.2.9",
     "moment": "^2.29.1",
     "mui-app-bar": "^1.0.6",

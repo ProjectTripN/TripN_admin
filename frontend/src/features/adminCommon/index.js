@@ -9,12 +9,7 @@ export { default as TotalProfit2 } from 'features/adminCommon/components/TotalPr
 export { default as TrafficByDevice } from 'features/adminCommon/components/TrafficByDevice'
 
 // layout
-export {default as DashboardLayout} from 'features/adminCommon/layout/DashboardLayout'
-export {default as DashboardSidebar} from 'features/adminCommon/layout/DashboardSidebar'
 export {default as GlobalStyles} from 'features/adminCommon/layout/GlobalStyles'
 export {default as AppAppBar} from 'features/adminCommon/layout/AppAppBar'
-export {default as MainLayout} from 'features/adminCommon/layout/MainLayout'
-export {default as MainNavbar} from 'features/adminCommon/layout/MainNavbar'
-export {default as NavItem} from 'features/adminCommon/layout/NavItem'
 export {default as AppBar} from 'features/adminCommon/layout/AppBar'
 export {default as Toolbar} from 'features/adminCommon/layout/Toolbar'

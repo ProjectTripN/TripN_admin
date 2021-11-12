@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet';
 import { Box, Container, Grid } from '@material-ui/core';
-import { Budget, LatestOrders, LatestSales, TotalCustomers, TotalProfit, TrafficByDevice, DashboardSidebar, TotalProfit2, Navigation, NavItem } from 'features/adminCommon'
+import { Budget, LatestOrders, LatestSales, TotalCustomers, TotalProfit, TrafficByDevice, TotalProfit2, Navigation } from 'features/adminCommon'
 import AppAppBar from '../layout/AppAppBar';
 import 'features/adminCommon/components/grid.css'
 

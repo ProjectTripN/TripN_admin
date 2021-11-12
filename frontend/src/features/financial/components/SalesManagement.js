@@ -1,30 +1,66 @@
 import React from 'react'
 import { Navigation, AppAppBar } from 'features/adminCommon'
 import styled from 'styled-components'
-import {Chart1, Chart2, Chart3, Chart4, ChartData, ChartData2, ChartData3, ChartData4} from 'features/financial'
+import { Chart1, Chart2, Chart3, Chart4, ChartData, ChartData2, ChartData3, ChartData4 } from 'features/financial'
+import { Box, Container, Grid } from '@material-ui/core';
 
 const SalesManagement = () => {
-    return(<>
-    <AppAppBar/>
-    <ChartTable>
-        <Charttr>
-            <td rowspan="2" style={{border: "1px solid black"}}><Navigation/></td>
-            <Charttd>
-                <Chartdiv><Chart4 data= {ChartData4}/></Chartdiv>
-                </Charttd>
-            <Charttd>
-                <Chartdiv><Chart3 data= {ChartData3}/></Chartdiv>
-            </Charttd>
-        </Charttr>
-        <Charttr>
-            <Charttd>
-                <Chartdiv><Chart2 data= {ChartData2}/></Chartdiv>
-                </Charttd>
-            <Charttd>
-                <Chartdiv><Chart1 data= {ChartData}/></Chartdiv>
-                </Charttd>
-        </Charttr>
-    </ChartTable>
+    return (<>
+        <AppAppBar />
+        <Box
+            sx={{
+                backgroundColor: 'background.default',
+                minHeight: '100%',
+                py: 3
+            }}
+        >
+            <div className='container' >
+                <Navigation className='navi' />
+                <Container maxWidth={false} className='item1' >
+                    <Grid
+                        container
+                        spacing={1}
+                    >
+                        <Grid
+                            item
+                            lg={4}
+                            md={6}
+                            xl={3}
+                            xs={12}
+                        >
+                            <Chart1 />
+                        </Grid>
+                        <Grid
+                            item
+                            lg={4}
+                            md={6}
+                            xl={3}
+                            xs={12}
+                        >
+                            <Chart1 />
+                        </Grid>
+                        <Grid
+                            item
+                            lg={4}
+                            md={6}
+                            xl={3}
+                            xs={12}
+                        >
+                            <Chart1 />
+                        </Grid>
+                        <Grid
+                            item
+                            lg={4}
+                            md={6}
+                            xl={3}
+                            xs={12}
+                        >
+                            <Chart1 />
+                        </Grid>
+                    </Grid>
+                </Container>
+            </div>
+        </Box>
     </>)
 }
 

@@ -11,9 +11,7 @@ import {
   TableBody,
   TableCell,
   TableHead,
-  TableRow,
-  TableSortLabel,
-  Tooltip
+  TableRow
 } from '@material-ui/core';
 
 const orders = [
@@ -64,18 +62,8 @@ const LatestOrders = (props) => (
               <TableCell>
                 Customer
               </TableCell>
-              <TableCell sortDirection="desc">
-                <Tooltip
-                  enterDelay={300}
-                  title="Sort"
-                >
-                  <TableSortLabel
-                    active
-                    direction="desc"
-                  >
-                    Date
-                  </TableSortLabel>
-                </Tooltip>
+              <TableCell>
+                Date
               </TableCell>
               <TableCell>
                 Status

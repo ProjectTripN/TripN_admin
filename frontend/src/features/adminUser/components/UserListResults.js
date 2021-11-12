@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
-import moment from 'moment';
 import PerfectScrollbar from 'react-perfect-scrollbar';
+import PropTypes from 'prop-types';
+import { format } from 'date-fns';
 import {
+  Avatar,
   Box,
   Card,
   Checkbox,
@@ -13,9 +14,10 @@ import {
   TablePagination,
   TableRow,
   Typography
-} from '@material-ui/core';
+} from '@mui/material';
+import { getInitials } from 'features/adminUser';
 
-export default function UserList ({ users, ...rest }) {
+export default function UserListResults ({ customers, ...rest }) {
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
@@ -24,7 +26,7 @@ export default function UserList ({ users, ...rest }) {
     let newSelectedCustomerIds;
 
     if (event.target.checked) {
-      newSelectedCustomerIds = users.map((customer) => customer.id);
+      newSelectedCustomerIds = customers.map((customer) => customer.id);
     } else {
       newSelectedCustomerIds = [];
     }
@@ -69,11 +71,11 @@ export default function UserList ({ users, ...rest }) {
               <TableRow>
                 <TableCell padding="checkbox">
                   <Checkbox
-                    checked={selectedCustomerIds.length === users.length}
+                    checked={selectedCustomerIds.length === customers.length}
                     color="primary"
                     indeterminate={
                       selectedCustomerIds.length > 0
-                      && selectedCustomerIds.length < users.length
+                      && selectedCustomerIds.length < customers.length
                     }
                     onChange={handleSelectAll}
                   />
@@ -96,7 +98,7 @@ export default function UserList ({ users, ...rest }) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {users.slice(0, limit).map((customer) => (
+              {customers.slice(0, limit).map((customer) => (
                 <TableRow
                   hover
                   key={customer.id}
@@ -116,6 +118,12 @@ export default function UserList ({ users, ...rest }) {
                         display: 'flex'
                       }}
                     >
+                      <Avatar
+                        src={customer.avatarUrl}
+                        sx={{ mr: 2 }}
+                      >
+                        {getInitials(customer.name)}
+                      </Avatar>
                       <Typography
                         color="textPrimary"
                         variant="body1"
@@ -134,7 +142,7 @@ export default function UserList ({ users, ...rest }) {
                     {customer.phone}
                   </TableCell>
                   <TableCell>
-                    {moment(customer.createdAt).format('DD/MM/YYYY')}
+                    {format(customer.createdAt, 'dd/MM/yyyy')}
                   </TableCell>
                 </TableRow>
               ))}
@@ -144,7 +152,7 @@ export default function UserList ({ users, ...rest }) {
       </PerfectScrollbar>
       <TablePagination
         component="div"
-        count={users.length}
+        count={customers.length}
         onPageChange={handlePageChange}
         onRowsPerPageChange={handleLimitChange}
         page={page}
@@ -155,6 +163,6 @@ export default function UserList ({ users, ...rest }) {
   );
 };
 
-UserList.propTypes = {
+UserListResults.propTypes = {
   customers: PropTypes.array.isRequired
 };

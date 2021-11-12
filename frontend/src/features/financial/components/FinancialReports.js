@@ -1,18 +1,61 @@
 import React from 'react'
 import styled from 'styled-components'
 import { AppAppBar, Navigation } from 'features/adminCommon'
+import { Box, Container, Grid } from '@material-ui/core';
 
 const FinancialReports = () => {
-    return(<>
-    <AppAppBar/>
-    <ChartTable>
-        <Charttr>
-            <td style={{width:'15%', border: "1px solid black"}}><Navigation/></td>
-            <Charttd>
-            
-            </Charttd>
-        </Charttr>
-    </ChartTable>
+    return (<>
+        <AppAppBar />
+        <Box
+            sx={{
+                backgroundColor: 'background.default',
+                minHeight: '100%',
+                py: 3
+            }}
+        >
+            <div className='container' >
+                <Navigation className='navi' />
+                <Container maxWidth={false} className='item1' >
+                    <Grid
+                        container
+                        spacing={1}
+                    >
+                        <Grid
+                            item
+                            lg={4}
+                            md={6}
+                            xl={3}
+                            xs={12}
+                        >
+                        </Grid>
+                        <Grid
+                            item
+                            lg={4}
+                            md={6}
+                            xl={3}
+                            xs={12}
+                        >
+                        </Grid>
+                        <Grid
+                            item
+                            lg={4}
+                            md={6}
+                            xl={3}
+                            xs={12}
+                        >
+                        </Grid>
+                        <Grid
+                            item
+                            lg={4}
+                            md={6}
+                            xl={3}
+                            xs={12}
+                        >
+                        </Grid>
+                    </Grid>
+                </Container>
+            </div>
+        </Box>
     </>)
 }
 
@@ -36,4 +79,3 @@ const Charttd = styled.td`
     height:700px;
     border: 1px solid black;
 `
-
