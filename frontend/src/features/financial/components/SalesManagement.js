@@ -1,10 +1,9 @@
 import React from 'react'
 import { Navigation, AppAppBar } from 'features/adminCommon'
-import styled from 'styled-components'
 import { Chart1, Chart2, Chart3, Chart4, ChartData, ChartData2, ChartData3, ChartData4 } from 'features/financial'
 import { Box, Container, Grid } from '@material-ui/core';
 
-const SalesManagement = () => {
+export default function SalesManagement () {
     return (<>
         <AppAppBar />
         <Box
@@ -37,7 +36,7 @@ const SalesManagement = () => {
                             xl={3}
                             xs={12}
                         >
-                            <Chart1 />
+                            <Chart2 />
                         </Grid>
                         <Grid
                             item
@@ -46,7 +45,7 @@ const SalesManagement = () => {
                             xl={3}
                             xs={12}
                         >
-                            <Chart1 />
+                            <Chart3 />
                         </Grid>
                         <Grid
                             item
@@ -55,7 +54,7 @@ const SalesManagement = () => {
                             xl={3}
                             xs={12}
                         >
-                            <Chart1 />
+                            <Chart4 />
                         </Grid>
                     </Grid>
                 </Container>
@@ -63,30 +62,3 @@ const SalesManagement = () => {
         </Box>
     </>)
 }
-
-export default SalesManagement
-
-const ChartTable = styled.table`
-    width: 98%;
-    height:700px;
-`
-
-const Charttr = styled.tr`
-    width:100%;
-    height:100%;
-    margin:auto;
-    border:1px solid black;
-`
-
-const Charttd = styled.td`
-    padding:1%;
-    margin:auto;
-    border: 1px solid black;
-`
-
-const Chartdiv = styled.div`
-    display:block;
-    margin:auto;
-    width:500px;
-    height:348px;
-`
