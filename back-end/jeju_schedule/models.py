@@ -1,7 +1,5 @@
 from datetime import datetime
-from random import random
 from django.db import models
-from icecream import ic
 from django.db.models import IntegerField, CharField
 from django_mysql.models import ListCharField, ListTextField
 from image.models import Category
@@ -13,6 +11,7 @@ class JejuSchedule(models.Model):
     # days[0], plane, acc, activity, olle, restaurant, tourism, shop, startday, endday, day, people, user, relationship
     # Jeju_Schedule
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # user
+    reg_date = models.DateTimeField(default=datetime.now())  # 생성일
     startday = models.DateField()  # startday
     endday = models.DateField()  # endday
     day = models.IntegerField()  # day
@@ -33,4 +32,4 @@ class JejuSchedule(models.Model):
         db_table = "jeju_schedule"
 
     def __str__(self):
-        return f'[{self.pk}] {self.id}'
+        return f'{self.id}'
