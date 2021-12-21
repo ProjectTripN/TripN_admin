@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbc6e459-6875-4cfb-9bdf-a0c48c722e5b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jeju_schedule/models_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/jeju_schedule/models_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ledger/data/cost.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ledger/data/cost.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ledger/data/test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ledger/data/sales.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ledger/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ledger/models_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/ledger/models_process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ledger/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ledger/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation/models_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservation/models_process.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,11 +59,14 @@
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
     <property name="database.data.extractors.current.id" value="Comma-separated (CSV)_id" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/ledger" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="SQL Dialects" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\bitcamp\winter-django-cuda\back-end\ledger" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bitcamp\winter-django-cuda\back-end\reservation\data" />
     </key>
   </component>
   <component name="RunManager">
@@ -111,6 +122,14 @@
       <workItem from="1639650558592" duration="834000" />
       <workItem from="1639651409982" duration="3620000" />
       <workItem from="1639706233038" duration="1733000" />
+      <workItem from="1639709979565" duration="360000" />
+      <workItem from="1639711243232" duration="14092000" />
+      <workItem from="1639739626849" duration="755000" />
+      <workItem from="1639805379760" duration="945000" />
+      <workItem from="1639925298716" duration="298000" />
+      <workItem from="1639977951830" duration="6153000" />
+      <workItem from="1639984179465" duration="14101000" />
+      <workItem from="1640049393564" duration="23458000" />
     </task>
     <servers />
   </component>
