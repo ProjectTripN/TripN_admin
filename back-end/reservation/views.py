@@ -1,5 +1,4 @@
 from django.http import JsonResponse
-from rest_framework import status
 from rest_framework.parsers import JSONParser
 from rest_framework.decorators import api_view, parser_classes
 from rest_framework.response import Response
@@ -11,8 +10,15 @@ from reservation.serializers import ReservationSerializer
 @api_view(['GET'])
 @parser_classes([JSONParser])
 def preprocess(request):
-    Processing().pre_process(p=4)
+    Processing().pre_process()
     return Response({'preprocess': 'SUCCESS'})
+
+
+@api_view(['GET'])
+@parser_classes([JSONParser])
+def process(request, pk):
+    Processing().process(pk)
+    return JsonResponse({'process': 'SUCCESS'})
 
 
 @api_view(['GET'])
@@ -20,40 +26,25 @@ def preprocess(request):
 def insert_data(request):
     Processing().insert_data()
     return Response({'SUCCESS'})
-    # if request.method == 'GET':
-    #     queryset = Reservation.objects.all()
-    #     serializer = ReservationSerializer(queryset, many=True)
-    #     return Response(serializer.data)
-    # elif request.method == 'POST':
-    #     serializer = ReservationSerializer(data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data, status=status.HTTP_201_CREATE)
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# @api_view(['GET'])
-# @parser_classes([JSONParser])
-# def process(request):
-#     Processing().process()
-#     return JsonResponse({'Processing': 'SUCCESS'})
+@api_view(['POST'])
+@parser_classes([JSONParser])
+def show_invoice(request):
+    print(f'hi : {request}')
+    print(f'hello : {request.data}')
+    invoice_data = Reservation.objects.all()
+    invoice_data = ReservationSerializer(invoice_data, many=True).data
+    report = {"report": invoice_data}
+    return JsonResponse(data=report, safe=False)
 
 
 # @api_view(['POST'])
 # @parser_classes([JSONParser])
-# def process(request):
-#     try:
-#         loginUser = request.data
-#         dbUser = Brevity.objects.get(pk=loginUser['username'])
-#         if loginUser['password'] == dbUser.password:
-#             userSerializer = UserSerializer(dbUser, many=False)
-#             ic(userSerializer)
-#             return JsonResponse(data=userSerializer.data, safe=False)
-#         else:
-#             print('******** 비밀번호 오류')
-#             return JsonResponse(data={'result': 'PASSWORD-FAIL'}, status=201)
-#
-#     except User.DoesNotExist:
-#         print('*' * 50)
-#         print('******** Username 오류')
-#         return JsonResponse(data={'result': 'USERNAME-FAIL'}, status=201)
+# def show_chart(request):
+#     print(f'hi : {request}')
+#     print(f'hello : {request.data}')
+#     chart2_data = Reservation.objects.all()
+#     invoice_data = ReservationSerializer(invoice_data, many=True).data
+#     report = {"report": invoice_data}
+#     return JsonResponse(data=report, safe=False)

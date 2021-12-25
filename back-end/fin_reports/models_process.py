@@ -1,14 +1,11 @@
-from common.models import ValueObject, Reader, Printer
+import pandas as pd
+from fin_reports.models import FinReports as fin_reports
+from ledger.models import Ledger
 
 
-class Processing:
+class ReportProcessing:
     def __init__(self):
-        vo = ValueObject()
-        reader = Reader()
-        self.printer = Printer()
-        vo.context = 'reservation/data/'
-        vo.fname = 'price.csv'
-        self.csvfile = reader.new_file(vo)
+        pass
 
     def process(self):
         pass
