@@ -44,24 +44,21 @@ def sales(request, pk):
     return JsonResponse({'SALES': 'SUCCESS'})
 
 
-@api_view(['POST'])
+@api_view(['GET'])
 @parser_classes([JSONParser])
 def profit(request):
     print(f'hi : {request}')
     print(f'hello : {request.data}')
     c = '매출액'
     sum_data = Ledger.objects.filter(category=c).aggregate(Sum('price'))
-    report = {"report": sum_data}
-    return JsonResponse(data=report, safe=False)
+    print(sum_data)
+    return JsonResponse(data=sum_data, safe=False)
 
 
-@api_view(['POST'])
+@api_view(['GET'])
 @parser_classes([JSONParser])
-def profit_month(request):
+def annual(request):
     print(f'hi : {request}')
     print(f'hello : {request.data}')
-    month = {}
-    for i in month:
-        sum_data = Ledger.objects.filter(date__year=2021, date__month=i).aggregate(Sum('price'))
-        month[i] = sum_data['price']
-        return JsonResponse(data=sum_data, safe=False)
+    an_data = Ledger.objects.all()
+    return JsonResponse(data=an_data, safe=False)

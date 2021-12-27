@@ -1,5 +1,4 @@
 from django.db import models
-from jeju.models import JejuSchedule
 from reservation.models import Reservation
 
 

@@ -22,7 +22,7 @@ class Processing:
         arr = []
         for t in range(1, 9):
             t = Reservation.objects.get(pk=t)
-            total = t.total_price
+            total = t.total_price - t.tax
             price = t.price
             date = t.reg_date
             profit = total - price
@@ -44,7 +44,7 @@ class Processing:
     def sales_process(self, s):
         arr = []
         t = Reservation.objects.get(pk=s)
-        total = t.total_price
+        total = t.total_price - t.tax
         price = t.price
         date = t.reg_date
         profit = total - price
@@ -62,9 +62,6 @@ class Processing:
         df = pd.DataFrame(result, columns=['date', 'category', 'price'])
         print(df)
         df.to_csv('ledger/data/get_sales.csv')
-
-    # def sum_profit(self):
-    #     c = '매출액'
 
     def pre_cost(self):
         arr = []
