@@ -1,7 +1,10 @@
 import csv
 import pandas as pd
+
+import ledger
 from common.models import ValueObject, Printer, Reader
 from fin_reports.models import FinReports
+from ledger.models import Ledger
 
 
 class DbUploader:
@@ -25,9 +28,14 @@ class DbUploader:
         with open(self.csvfile, newline='', encoding='utf8') as f:
             data_reader = csv.DictReader(f)
             for row in data_reader:
+                # l = Ledger()
+                # ledger = Ledger.objects.all()
+                # print(ledger)
+                # l.id = ledger['id']
                 # if not FinReports.objects.filter(category=row['항목명']).exists():
-                fin_reports = FinReports.objects.create(year=2020,
+                fin_reports = FinReports.objects.create(year=2018,
                                                         category=row['항목명'],
-                                                        price=int(float(row['당기'])))
+                                                        price=int(float(row['전전기'])),
+                                                        ledger_id=None)
                 print(f'1 >>>> {fin_reports}')
         print('USER DATA UPLOADED SUCCESSFULLY!')
