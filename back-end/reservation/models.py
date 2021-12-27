@@ -1,5 +1,6 @@
 from django.db import models
-from jeju.models import JejuSchedule
+
+from price.models import Price
 
 
 class Reservation(models.Model):
@@ -14,7 +15,8 @@ class Reservation(models.Model):
     subtotal = models.IntegerField()
     fees = models.IntegerField()
     total_price = models.IntegerField()
-    jeju_schedule = models.ForeignKey(JejuSchedule, on_delete=models.CASCADE)
+    jeju_schedule = models.IntegerField()
+    price_id = models.ForeignKey(Price, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'reservation'
@@ -30,4 +32,5 @@ class Reservation(models.Model):
                f'부가가치세: {self.tax}' \
                f'수수료 붙기 전 총금액: {self.subtotal}' \
                f'여행수수료: {self.fees}' \
-               f'총금액: {self.total_price}'
+               f'총금액: {self.total_price}' \
+               f'가격표: {self.price_id}'
