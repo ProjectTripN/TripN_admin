@@ -16,7 +16,7 @@ def upload(request):
 @api_view(['GET'])
 @parser_classes([JSONParser])
 def show_fin_reports(request):
-    c = '매출액', '매출원가', '매출총이익', '판매비와관리비', '영업이익', '기타손익 및 금융손익', '기타수익', '기타비용', '금융수익', '금융비용', '당기순이익'
+    c = '매출액', '매출원가', '매출총이익', '판매비와관리비', '지급수수료', '영업이익', '기타손익 및 금융손익', '기타수익', '기타비용', '금융수익', '금융비용', '당기순이익(손실)'
     print(f'hi : {request}')
     print(f'hello : {request.data}')
     fin_reports_2020 = FinReports.objects.filter(year__in=['2020'], category__in=c)

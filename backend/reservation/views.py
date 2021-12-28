@@ -44,6 +44,15 @@ def profit_month(request):
 
 @api_view(['GET'])
 @parser_classes([JSONParser])
+def profit_6month(request):
+    result = Processing().year()
+    print(result)
+    result = result[6:12]
+    return JsonResponse(data=result, safe=False)
+
+
+@api_view(['GET'])
+@parser_classes([JSONParser])
 def count_res(request):
     count_data = Processing().count()
     return JsonResponse(data=count_data, safe=False)

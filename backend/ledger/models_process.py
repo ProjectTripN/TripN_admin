@@ -2,6 +2,8 @@
 import csv
 import random
 import pandas as pd
+from django.db.models import Sum
+
 from ledger.models import Ledger
 from common.models import ValueObject, Reader, Printer
 from reservation.models import Reservation
@@ -137,7 +139,25 @@ class Processing:
             data_reader = csv.DictReader(f)
             for row in data_reader:
                 ledger = Ledger.objects.create(date=row['date'],
+                                               year=2021,
                                                category=row['category'],
                                                price=row['price'])
                 print(f'2 >>>> {ledger}')
             print('DATA UPLOADED SUCCESSFULLY!')
+
+    def show_cost(self):
+        c = '매출원가', '판매비와관리비', '지급수수료', '기타비용', '금융비용'
+        cost = [{f'판매비와관리비 {p}': Ledger.objects.filter(year=2021, date__month=p, category__in='판매비와관리비').aggregate(Sum('price')),
+                 f'지급수수료 {p}': Ledger.objects.filter(year=2021, date__month=p, category__in='지급수수료').aggregate(Sum('price')),
+                 f'기타비용 {p}': Ledger.objects.filter(year=2021, date__month=p, category__in='기타비용').aggregate(Sum('price')),
+                 f'금융비용 {p}': Ledger.objects.filter(year=2021, date__month=p, category__in='금융비용').aggregate(Sum('price'))} for p in range(1, 13)]
+        # cost = [
+        #     {f'매출원가 {p}': Ledger.objects.filter(year=2021, date__month=p, category__in='매출원가').aggregate(Sum('price')),
+        #      f'판매비와관리비 {p}': Ledger.objects.filter(year=2021, date__month=p, category__in='판매비와관리비').aggregate(
+        #          Sum('price')),
+        #      f'지급수수료 {p}': Ledger.objects.filter(year=2021, date__month=p, category__in='지급수수료').aggregate(
+        #          Sum('price')),
+        #      f'기타비용 {p}': Ledger.objects.filter(year=2021, date__month=p, category__in='기타비용').aggregate(Sum('price')),
+        #      f'금융비용 {p}': Ledger.objects.filter(year=2021, date__month=p, category__in='금융비용').aggregate(Sum('price'))}
+        #     for p in range(1, 13)]
+        return cost

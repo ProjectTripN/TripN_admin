@@ -57,3 +57,10 @@ def profit(request):
 def report_process(request):
     Processing().report_process()
     return JsonResponse({'report_process': 'SUCCESS'})
+
+
+@api_view(['GET'])
+@parser_classes([JSONParser])
+def show_cost(request):
+    result = Processing().show_cost()
+    return JsonResponse(data=result, safe=False)
