@@ -31,7 +31,7 @@ class Processing:
 
     def pre_sales(self):
         arr = []
-        for t in range(1, 9):
+        for t in range(4, 12):
             t = Reservation.objects.get(pk=t)
             total = t.total_price - t.tax
             price = t.price
@@ -121,11 +121,12 @@ class Processing:
         df.to_csv('ledger/data/cost.csv')
 
     def insert_sales(self):
-        with open('ledger/data/sales.csv', newline='', encoding='utf8') as f:
+        with open('ledger/data/get_sales.csv', newline='', encoding='utf8') as f:
             data_reader = csv.DictReader(f)
             for row in data_reader:
                 # if not Ledger.objects.filter(category=row['category'], date=row['date']).exists():
                     ledger = Ledger.objects.create(date=row['date'],
+                                                   year=2021,
                                                    category=row['category'],
                                                    price=row['price'])
                     print(f'2 >>>> {ledger}')

@@ -1,5 +1,4 @@
 import datetime
-
 from django.db.models import Sum
 from django.http import JsonResponse
 from rest_framework.parsers import JSONParser
@@ -49,8 +48,11 @@ def sales(request, pk):
 def profit(request):
     print(f'hi : {request}')
     print(f'hello : {request.data}')
-    c = '매출액'
-    sum_data = Ledger.objects.filter(category=c).aggregate(Sum('price'))
+    y = Ledger.objects.filter(year=2021)
+    print(y)
+    c = y.filter(category='매출액')
+    print(c)
+    sum_data = c.aggregate(Sum('price'))
     print(sum_data)
     return JsonResponse(data=sum_data, safe=False)
 

@@ -46,18 +46,15 @@ def profit_month(request):
 @api_view(['GET'])
 @parser_classes([JSONParser])
 def count_res(request):
-    count_data = {}
-    for i in range(6):
-        today = datetime.date.today().month
-        count = Reservation.objects.filter(reg_date__month=today-i).aggregate(Count('id'))
-        count_data[i] = [today-i, count['id__count']]
-        print(list(count_data.values()))
-    df_c = pd.DataFrame(list(count_data.values()), columns=['a', 'b'])
-    df_b = df_c.T
-    df_a = df_b.values.tolist()
-    df_r = df_a[0]
-    df_r.reverse()
-    df_rr = df_a[1]
-    df_rr.reverse()
-    df = [df_r, df_rr]
-    return JsonResponse(data=df, safe=False)
+    count_data = Processing().count()
+    # print(count_data)
+    # df_c = pd.DataFrame(count_data, columns=['a', 'b'])
+    # df_b = df_c.T
+    # df_a = df_b.values.tolist()
+    # df_r = df_a[0]
+    # df_r.reverse()
+    # df_rr = df_a[1]
+    # df_rr.reverse()
+    # df = [df_r, df_rr]
+    # print(df)
+    return JsonResponse(data=count_data, safe=False)

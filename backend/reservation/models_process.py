@@ -1,7 +1,7 @@
 # 여행업 알선 수입＝여행자로부터 받는 관광요금－원가
 import csv
-import math
-import pandas as pd
+from datetime import datetime
+from django.db.models import Count
 from reservation.models import Reservation
 from common.models import ValueObject, Reader, Printer
 
@@ -16,8 +16,7 @@ class Processing:
         self.csvfile = reader.new_file(vo)
 
     def insert_data(self):
-        pass
-        # self.insert_reservation()
+        self.insert_reservation()
 
     # def pre_process(self):
     #     arr = []
@@ -61,7 +60,7 @@ class Processing:
     #     df = pd.DataFrame(result, columns=['reg_date', 'people', 'day', 'plane_pr', 'acc_pr', 'act_pr', 'price', 'tax',
     #                                        'subtotal', 'fees', 'total_price', 'jeju_schedule_id'])
     #     df.to_csv(self.csvfile)
-
+    #
     # def process(self, p):
     #     arr = []
     #     pr = JejuSchedule.objects.get(pk=p)
@@ -103,22 +102,34 @@ class Processing:
     #     df = pd.DataFrame(result, columns=['reg_date', 'people', 'day', 'plane_pr', 'acc_pr', 'act_pr', 'price', 'tax',
     #                                        'subtotal', 'fees', 'total_price', 'jeju_schedule_id'])
     #     df.to_csv('reservation/data/get_price.csv')
-    #
-    # def insert_reservation(self):
-    #     with open(self.csvfile, newline='', encoding='utf8') as f:
-    #         data_reader = csv.DictReader(f)
-    #         for row in data_reader:
-    #             reservation = Reservation.objects.create(reg_date=row['reg_date'],
-    #                                                      people=row['people'],
-    #                                                      day=row['day'],
-    #                                                      plane_pr=row['plane_pr'],
-    #                                                      acc_pr=row['acc_pr'],
-    #                                                      act_pr=row['act_pr'],
-    #                                                      price=row['price'],
-    #                                                      tax=row['tax'],
-    #                                                      subtotal=row['subtotal'],
-    #                                                      fees=row['fees'],
-    #                                                      total_price=row['total_price'],
-    #                                                      jeju_schedule_id=row['jeju_schedule_id'])
-    #             print(f'2 >>>> {reservation}')
-    #         print('DATA UPLOADED SUCCESSFULLY!')
+
+    def count(self):
+        count_data = {}
+        for i in range(6):
+            today = datetime(year=2021, month=12, day=31).month
+            count = Reservation.objects.filter(reg_date__month=today - i).aggregate(Count('id'))
+            count_data[f'{i}번째'] = [f'{today - i}월', count['id__count']]
+            # print(list(count_data.values()))
+        count = count_data
+        print(count)
+        return count
+
+    def insert_reservation(self):
+        with open('', newline='', encoding='utf8') as f:
+            data_reader = csv.DictReader(f)
+            for row in data_reader:
+                reservation = Reservation.objects.create(reg_date=row['reg_date'],
+                                                         people=row['people'],
+                                                         day=row['day'],
+                                                         plane_pr=row['plane_pr'],
+                                                         acc_pr=row['acc_pr'],
+                                                         act_pr=row['act_pr'],
+                                                         price=row['price'],
+                                                         tax=row['tax'],
+                                                         subtotal=row['subtotal'],
+                                                         fees=row['fees'],
+                                                         total_price=row['total_price'],
+                                                         jeju_schedule=row['jeju_schedule'],
+                                                         user=row['user'])
+                print(f'2 >>>> {reservation}')
+            print('DATA UPLOADED SUCCESSFULLY!')
