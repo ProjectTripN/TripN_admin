@@ -25,7 +25,6 @@ class Processing:
                                                date='2020-12-31',
                                                category=row['항목명'],
                                                price=int(float(row['전기'])),
-                                               # id=row['id']
                                                )
                 print(f'1 >>>> {report}')
         print('USER DATA UPLOADED SUCCESSFULLY!')

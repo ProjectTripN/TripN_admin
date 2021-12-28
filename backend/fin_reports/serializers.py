@@ -6,6 +6,7 @@ class FinReportsSerializer(serializers.Serializer):
     year = serializers.IntegerField()
     category = serializers.CharField()
     price = serializers.IntegerField()
+    # ledger_id = serializers.IntegerField()
 
     class Meta:
         model = finReports

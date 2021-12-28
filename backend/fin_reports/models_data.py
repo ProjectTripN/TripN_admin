@@ -5,6 +5,7 @@ import ledger
 from common.models import ValueObject, Printer, Reader
 from fin_reports.models import FinReports
 from ledger.models import Ledger
+from ledger.serializer import LedgerSerializer
 
 
 class DbUploader:
@@ -25,17 +26,15 @@ class DbUploader:
         df.to_csv(self.csvfile + '2020_PL_2.csv')
 
     def insert_fin_report(self):
-        with open(self.csvfile, newline='', encoding='utf8') as f:
-            data_reader = csv.DictReader(f)
-            for row in data_reader:
-                # l = Ledger()
-                # ledger = Ledger.objects.all()
-                # print(ledger)
-                # l.id = ledger['id']
-                # if not FinReports.objects.filter(category=row['항목명']).exists():
-                fin_reports = FinReports.objects.create(year=2018,
-                                                        category=row['항목명'],
-                                                        price=int(float(row['전전기'])),
-                                                        ledger_id=None)
-                print(f'1 >>>> {fin_reports}')
+        # l = Ledger()
+        ledger = Ledger.objects.all()
+        ledger = LedgerSerializer(ledger, many=True).data
+        for row in ledger:
+            print(row)
+            fin_reports = FinReports.objects.create(year=row['year'],
+                                                    category=row['category'],
+                                                    price=row['price'],
+                                                    ledger_id=row['id']
+                                                    )
+            print(f'1 >>>> {fin_reports}')
         print('USER DATA UPLOADED SUCCESSFULLY!')

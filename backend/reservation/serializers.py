@@ -17,7 +17,7 @@ class ReservationSerializer(serializers.Serializer):
     fees = serializers.IntegerField()
     total_price = serializers.IntegerField()
     jeju_schedule = serializers.IntegerField()
-    pr = serializers.IntegerField()
+    user = serializers.IntegerField()
 
     class Meta:
         model = reservation

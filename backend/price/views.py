@@ -41,15 +41,17 @@ def get_price(request):
     fees = {'fees': int(subtotal['subtotal'] * 0.2)}
     total_price = {'total_price': int(subtotal['subtotal'] + fees['fees'])}
     jeju_schedule = {'jeju_schedule': dic['id']}
+    user = {'user': dic['user']}
     keys = []
     items = []
-    for i in [date, people, day, plane_unit, acc_unit, act_unit, plane_price, acc_price, price, tax, subtotal, fees, total_price, jeju_schedule]:
+    for i in [date, people, day, plane_unit, acc_unit, act_unit, plane_price, acc_price, price, tax, subtotal, fees, total_price, jeju_schedule, user]:
         for j in i:
             keys.append(j)
             items.append(i[j])
     result = dict(zip(keys, items))
+    print(result)
     serializer = ReservationSerializer(data=result, partial=True)
     print(serializer)
-    # if serializer.is_valid():
-    #     serializer.save()
+    if serializer.is_valid():
+        serializer.save()
     return JsonResponse(data=result, safe=False)

@@ -17,7 +17,7 @@ class Reservation(models.Model):
     fees = models.IntegerField()
     total_price = models.IntegerField()
     jeju_schedule = models.IntegerField()
-    pr = models.ForeignKey(Price, on_delete=models.CASCADE)
+    user = models.IntegerField()
 
     class Meta:
         db_table = 'reservation'
