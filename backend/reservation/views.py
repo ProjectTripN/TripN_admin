@@ -1,10 +1,7 @@
-import pandas as pd
-from django.db.models import Count, Sum
 from django.http import JsonResponse
 from rest_framework.parsers import JSONParser
 from rest_framework.decorators import api_view, parser_classes
 from rest_framework.response import Response
-from reservation.models import Reservation
 from reservation.models_process import Processing
 from reservation.serializers import ReservationSerializer
 
@@ -34,6 +31,14 @@ def insert_data(request):
 @parser_classes([JSONParser])
 def profit_year(request):
     result = Processing().year()
+    return JsonResponse(data=result, safe=False)
+
+
+@api_view(['GET'])
+@parser_classes([JSONParser])
+def profit_month(request):
+    result = Processing().year()
+    result = result[11]
     return JsonResponse(data=result, safe=False)
 
 
