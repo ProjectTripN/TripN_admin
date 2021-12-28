@@ -1,11 +1,9 @@
-import pandas as pd
 from django.db.models import Sum
 from django.http import JsonResponse
 from rest_framework.parsers import JSONParser
 from rest_framework.decorators import api_view, parser_classes
 from price.models import Price
 from price.models_process import Processing
-from reservation.models import Reservation
 from reservation.serializers import ReservationSerializer
 
 

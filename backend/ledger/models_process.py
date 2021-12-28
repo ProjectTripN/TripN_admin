@@ -21,17 +21,17 @@ class Processing:
             data_reader = csv.DictReader(f)
             for row in data_reader:
                 # if not FinReports.objects.filter(category=row['항목명']).exists():
-                report = Ledger.objects.create(year=2020,
-                                               date='2020-12-31',
+                report = Ledger.objects.create(year=2018,
+                                               date='2018-12-31',
                                                category=row['항목명'],
-                                               price=int(float(row['전기'])),
+                                               price=int(float(row['전전전기'])),
                                                )
                 print(f'1 >>>> {report}')
         print('USER DATA UPLOADED SUCCESSFULLY!')
 
     def pre_sales(self):
         arr = []
-        for t in range(4, 12):
+        for t in range(1, 11):
             t = Reservation.objects.get(pk=t)
             total = t.total_price - t.tax
             price = t.price
@@ -121,7 +121,7 @@ class Processing:
         df.to_csv('ledger/data/cost.csv')
 
     def insert_sales(self):
-        with open('ledger/data/get_sales.csv', newline='', encoding='utf8') as f:
+        with open('ledger/data/sales.csv', newline='', encoding='utf8') as f:
             data_reader = csv.DictReader(f)
             for row in data_reader:
                 # if not Ledger.objects.filter(category=row['category'], date=row['date']).exists():

@@ -46,14 +46,9 @@ def sales(request, pk):
 @api_view(['GET'])
 @parser_classes([JSONParser])
 def profit(request):
-    print(f'hi : {request}')
-    print(f'hello : {request.data}')
     y = Ledger.objects.filter(year=2021)
-    print(y)
     c = y.filter(category='매출액')
-    print(c)
     sum_data = c.aggregate(Sum('price'))
-    print(sum_data)
     return JsonResponse(data=sum_data, safe=False)
 
 

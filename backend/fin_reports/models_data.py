@@ -26,7 +26,6 @@ class DbUploader:
         df.to_csv(self.csvfile + '2020_PL_2.csv')
 
     def insert_fin_report(self):
-        # l = Ledger()
         ledger = Ledger.objects.all()
         ledger = LedgerSerializer(ledger, many=True).data
         for row in ledger:
