@@ -1,7 +1,7 @@
 # 여행업 알선 수입＝여행자로부터 받는 관광요금－원가
 import csv
 from datetime import datetime
-from django.db.models import Count
+from django.db.models import Count, Sum
 from reservation.models import Reservation
 from common.models import ValueObject, Reader, Printer
 
@@ -133,3 +133,9 @@ class Processing:
                                                          user=row['user'])
                 print(f'2 >>>> {reservation}')
             print('DATA UPLOADED SUCCESSFULLY!')
+
+    def year(self):
+        result = [{f'plane {p}': Reservation.objects.filter(reg_date__month=p).aggregate(Sum('plane_price'))['plane_price__sum'],
+                   f'acc {p}': Reservation.objects.filter(reg_date__month=p).aggregate(Sum('acc_price'))['acc_price__sum'],
+                   f'activity {p}': Reservation.objects.filter(reg_date__month=p).aggregate(Sum('act_unit'))['act_unit__sum']} for p in range(1, 13)]
+        return result
