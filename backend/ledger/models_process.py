@@ -2,8 +2,6 @@
 import csv
 import random
 import pandas as pd
-from django.db.models import Sum
-
 from ledger.models import Ledger
 from common.models import ValueObject, Reader, Printer
 from reservation.models import Reservation
@@ -17,6 +15,20 @@ class Processing:
         vo.context = 'ledger/data/'
         vo.fname = 'sales.csv'
         self.csvfile = reader.new_file(vo)
+
+    def report_process(self):
+        with open('ledger/data/2020_PL_3.csv', newline='', encoding='utf8') as f:
+            data_reader = csv.DictReader(f)
+            for row in data_reader:
+                # if not FinReports.objects.filter(category=row['항목명']).exists():
+                report = Ledger.objects.create(year=2020,
+                                               date='2020-12-31',
+                                               category=row['항목명'],
+                                               price=int(float(row['전기'])),
+                                               # id=row['id']
+                                               )
+                print(f'1 >>>> {report}')
+        print('USER DATA UPLOADED SUCCESSFULLY!')
 
     def pre_sales(self):
         arr = []

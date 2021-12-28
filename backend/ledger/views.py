@@ -57,8 +57,6 @@ def profit(request):
 
 @api_view(['GET'])
 @parser_classes([JSONParser])
-def annual(request):
-    print(f'hi : {request}')
-    print(f'hello : {request.data}')
-    an_data = Ledger.objects.all()
-    return JsonResponse(data=an_data, safe=False)
+def report_process(request):
+    Processing().report_process()
+    return JsonResponse({'report_process': 'SUCCESS'})

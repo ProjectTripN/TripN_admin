@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbc6e459-6875-4cfb-9bdf-a0c48c722e5b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9af9b1df-f005-486a-928b-82ba5ebe31c6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9af9b1df-f005-486a-928b-82ba5ebe31c6.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fin_reports/models_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/fin_reports/models_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fin_reports/data/2020_PL_3.csv" beforeDir="false" afterPath="$PROJECT_DIR$/ledger/data/2020_PL_3.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fin_reports/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ledger/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ledger/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ledger/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ledger/models_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/ledger/models_process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ledger/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ledger/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ledger/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ledger/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +65,7 @@
       <recent name="C:\Users\bitcamp\winter-django-cuda\back-end\ledger" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bitcamp\Desktop\TripN_admin\backend\ledger\data" />
       <recent name="C:\Users\bitcamp\winter-django-cuda\back-end\reservation\data" />
     </key>
   </component>
@@ -181,7 +189,8 @@
       <workItem from="1640596589507" duration="91000" />
       <workItem from="1640596702919" duration="18000" />
       <workItem from="1640596745081" duration="125000" />
-      <workItem from="1640596897898" duration="9303000" />
+      <workItem from="1640596897898" duration="9563000" />
+      <workItem from="1640663389065" duration="2235000" />
     </task>
     <servers />
   </component>
