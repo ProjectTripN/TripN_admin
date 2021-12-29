@@ -41,7 +41,6 @@ class Processing:
         print('USER DATA UPLOADED SUCCESSFULLY!')
 
     def count_mbti(self):
-        mbti = User.objects.raw("select user_id, mbti, count(mbti), count(gender) as mbti_count from tripn_mariadb.users group by mbti, gender order by mbti_count desc")[:5]
+        mbti = User.objects.raw("select user_id, mbti, gender, count(mbti) as mbti_count from tripn_mariadb.users group by mbti, gender order by mbti_count, gender desc")
         mbti = {row.mbti: row.mbti_count for row in mbti}
-        # gender = {row.gender: row.gender for row in mbti}
         return mbti
