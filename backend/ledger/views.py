@@ -61,6 +61,15 @@ def report_process(request):
 
 @api_view(['GET'])
 @parser_classes([JSONParser])
-def show_cost(request):
+def show_6month_cost(request):
     result = Processing().show_cost()
+    result = result[6:12]
+    return JsonResponse(data=result, safe=False)
+
+
+@api_view(['GET'])
+@parser_classes([JSONParser])
+def month_cost(request):
+    result = Processing().show_cost()
+    result = result[12]
     return JsonResponse(data=result, safe=False)

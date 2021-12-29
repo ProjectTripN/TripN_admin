@@ -9,5 +9,6 @@ urlpatterns = {
     url(r'sales/(?P<pk>\w{0,50})$', views.sales),
     url(r'profit', views.profit),
     url(r'report', views.report_process),
-    url(r'show_cost', views.show_cost)
+    url(r'6month_cost', views.show_6month_cost),
+    url(r'month_cost', views.month_cost)
 }
