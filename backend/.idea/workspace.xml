@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbc6e459-6875-4cfb-9bdf-a0c48c722e5b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/user/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ledger/models_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/ledger/models_process.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/models_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/models_process.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
@@ -53,11 +53,12 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
     <property name="database.data.extractors.current.id" value="Comma-separated (CSV)_id" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ledger" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/user" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\bitcamp\Desktop\TripN_admin\backend\user" />
       <recent name="C:\Users\bitcamp\winter-django-cuda\back-end\ledger" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -212,7 +213,7 @@
       <workItem from="1640596897898" duration="9563000" />
       <workItem from="1640663389065" duration="23618000" />
       <workItem from="1640695216064" duration="12484000" />
-      <workItem from="1640756372062" duration="12004000" />
+      <workItem from="1640756372062" duration="18057000" />
     </task>
     <servers />
   </component>
