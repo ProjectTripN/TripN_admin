@@ -40,7 +40,26 @@ class Processing:
                 print(f'1 >>>> {users}')
         print('USER DATA UPLOADED SUCCESSFULLY!')
 
-    def count_mbti(self):
-        mbti = User.objects.raw("select user_id, mbti, gender, count(mbti) as mbti_count from tripn_mariadb.users group by mbti, gender order by mbti_count, gender desc")
-        mbti = {row.mbti: row.mbti_count for row in mbti}
-        return mbti
+    # def count_mbti(self):
+        # mbti = User.objects.raw("select user_id, mbti, count(mbti) as mbti_count from tripn_mariadb.users group by mbti order by mbti_count desc")[:5]
+        # gender = User.objects.raw("select user_id, mbti, gender, count(mbti), count(gender) as gender_count from tripn_mariadb.users group by gender order by gender_count, gender desc")
+        # mbti = {row.mbti: row.mbti_count for row in mbti}
+        # gender = {row.gender: row.gender_count for row in gender}
+        # print(mbti, gender)
+        # return mbti, gender
+        # ls = [{"istj":0}, {"istp":0}, {"isfj":0}, {"isfp":0}, {"intj":0}, {"intp":0}, {"infj":0}, {"infp":0}, {"estj":0},
+        #       {"estp":0}, {"esfj":0}, {"esfp":0}, {"entj":0}, {"entp":0}, {"enfj":0}, {"enfp":0}]
+        # test = []
+        # mbti = User.objects.all()
+        # for i in mbti:
+        #     for j in ls:
+        #         if i.mbti == list(j.keys())[0]:
+        #             j[i.mbti] = j[i.mbti] + 1
+        # for i in ls:
+        #     test.append(list(i.values())[0])
+        # print(test)
+        # ls.sort(reverse=True)
+        # print(test)
+        # [print(i.mbti) for i in mbti]
+
+

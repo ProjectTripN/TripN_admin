@@ -12,8 +12,8 @@ def insert_data(request):
     return Response({'preprocess': 'SUCCESS'})
 
 
-@api_view(['GET'])
-@parser_classes([JSONParser])
-def count_mbti(request):
-    result = Processing().count_mbti()
-    return JsonResponse(data=result, safe=False)
+# @api_view(['GET'])
+# @parser_classes([JSONParser])
+# def count_mbti(request):
+#     result = Processing().count_mbti()
+#     return JsonResponse(data=result, safe=False)

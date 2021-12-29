@@ -145,10 +145,10 @@ class Processing:
             print('DATA UPLOADED SUCCESSFULLY!')
 
     def show_cost(self):
-        c = '매출원가', '판매비와관리비', '지급수수료', '기타비용', '금융비용'
-        cost = [{f'매출원가 {p}': Ledger.objects.filter(date__year=2021, date__month=p, category='매출원가').aggregate(Sum('price'))['price__sum'],
-                 f'판매비와관리비 {p}': Ledger.objects.filter(date__year=2021, date__month=p, category='판매비와관리비').aggregate(Sum('price'))['price__sum'],
-                 f'지급수수료 {p}': Ledger.objects.filter(date__year=2021, date__month=p, category='지급수수료').aggregate(Sum('price'))['price__sum'],
-                 f'기타비용 {p}': Ledger.objects.filter(date__year=2021, date__month=p, category='기타비용').aggregate(Sum('price'))['price__sum'],
-                 f'금융비용 {p}': Ledger.objects.filter(date__year=2021, date__month=p, category='금융비용').aggregate(Sum('price'))['price__sum']} for p in range(1, 13)]
+        cost = [{f'월': f'{p}',
+                 f'매출원가': Ledger.objects.filter(date__year=2021, date__month=p, category='매출원가').aggregate(Sum('price'))['price__sum'],
+                 f'판매비와관리비': Ledger.objects.filter(date__year=2021, date__month=p, category='판매비와관리비').aggregate(Sum('price'))['price__sum'],
+                 f'지급수수료': Ledger.objects.filter(date__year=2021, date__month=p, category='지급수수료').aggregate(Sum('price'))['price__sum'],
+                 f'기타비용': Ledger.objects.filter(date__year=2021, date__month=p, category='기타비용').aggregate(Sum('price'))['price__sum'],
+                 f'금융비용': Ledger.objects.filter(date__year=2021, date__month=p, category='금융비용').aggregate(Sum('price'))['price__sum']} for p in range(1, 13)]
         return cost
