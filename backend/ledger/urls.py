@@ -10,5 +10,6 @@ urlpatterns = {
     url(r'profit', views.profit),
     url(r'report', views.report_process),
     url(r'6month_cost', views.show_6month_cost),
-    url(r'month_cost', views.month_cost)
+    url(r'month_cost', views.month_cost),
+    url(r'year_profit', views.year_profit)
 }

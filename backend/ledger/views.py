@@ -73,3 +73,10 @@ def month_cost(request):
     result = Processing().show_cost()
     result = result[12]
     return JsonResponse(data=result, safe=False)
+
+
+@api_view(['GET'])
+@parser_classes([JSONParser])
+def year_profit(request):
+    result = Processing().year_profit()
+    return JsonResponse(data=result, safe=False)
