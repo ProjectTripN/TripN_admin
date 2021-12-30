@@ -22,10 +22,10 @@ class Processing:
             data_reader = csv.DictReader(f)
             for row in data_reader:
                 # if not FinReports.objects.filter(category=row['항목명']).exists():
-                report = Ledger.objects.create(year=2018,
-                                               date='2018-12-31',
+                report = Ledger.objects.create(year=2020,
+                                               date='2020-12-31',
                                                category=row['항목명'],
-                                               price=int(float(row['전전전기'])),
+                                               price=int(float(row['전기'])),
                                                )
                 print(f'1 >>>> {report}')
         print('USER DATA UPLOADED SUCCESSFULLY!')

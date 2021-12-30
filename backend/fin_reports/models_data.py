@@ -17,18 +17,17 @@ class DbUploader:
         self.csvfile = reader.new_file(vo)
 
     def insert_data(self):
-        # self.insert_fin_report()
-        pass
+        self.insert_fin_report()
 
-    # def insert_fin_report(self):
-    #     ledger = Ledger.objects.filter(year=2021)
-    #     ledger = LedgerSerializer(ledger, many=True).data
-    #     for row in ledger:
-    #         print(row)
-    #         fin_reports = FinReports.objects.create(year=row['year'],
-    #                                                 category=row['category'],
-    #                                                 price=row['price'],
-    #                                                 ledger_id=row['id']
-    #                                                 )
-    #         print(f'1 >>>> {fin_reports}')
-    #     print('USER DATA UPLOADED SUCCESSFULLY!')
+    def insert_fin_report(self):
+        ledger = Ledger.objects.filter(year=2021)
+        ledger = LedgerSerializer(ledger, many=True).data
+        for row in ledger:
+            print(row)
+            fin_reports = FinReports.objects.create(year=row['year'],
+                                                    category=row['category'],
+                                                    price=row['price'],
+                                                    ledger_id=row['id']
+                                                    )
+            print(f'1 >>>> {fin_reports}')
+        print('USER DATA UPLOADED SUCCESSFULLY!')

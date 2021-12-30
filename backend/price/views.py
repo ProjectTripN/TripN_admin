@@ -50,8 +50,8 @@ def get_price(request):
             items.append(i[j])
     result = dict(zip(keys, items))
     serializer = ReservationSerializer(data=result, partial=True)
-    # if serializer.is_valid():
-    #     serializer.save()
+    if serializer.is_valid():
+        serializer.save()
     return JsonResponse(data=result, safe=False)
 
 

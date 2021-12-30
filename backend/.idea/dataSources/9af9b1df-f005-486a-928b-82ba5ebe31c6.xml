@@ -1121,9 +1121,7 @@
     <table id="345" parent="7" name="price">
       <Collation>utf8_general_ci</Collation>
     </table>
-    <table id="346" parent="7" name="reservation">
-      <Collation>utf8_general_ci</Collation>
-    </table>
+    <table id="346" parent="7" name="reservation"/>
     <table id="347" parent="7" name="users">
       <Collation>utf8_general_ci</Collation>
     </table>
