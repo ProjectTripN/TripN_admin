@@ -71,3 +71,10 @@ def recent(request):
 def dummy_sales(request):
     result = Processing().dummy_sales()
     return JsonResponse(data=result, safe=False)
+
+
+@api_view(['GET'])
+@parser_classes([JSONParser])
+def insert_test(request):
+    Processing().insert_test()
+    return Response({'SUCCESS'})

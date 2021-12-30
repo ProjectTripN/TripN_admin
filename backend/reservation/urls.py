@@ -11,4 +11,5 @@ urlpatterns = {
     url(r'6month', views.profit_6month),
     url(r'recent', views.recent),
     url(r'dummy', views.dummy_sales),
+    url(r'test', views.insert_test),
 }

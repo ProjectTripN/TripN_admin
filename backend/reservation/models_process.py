@@ -2,7 +2,6 @@
 import csv
 from datetime import datetime
 from django.db.models import Count, Sum
-
 from price.models import Price
 from reservation.models import Reservation, Pay
 from common.models import ValueObject, Reader, Printer
@@ -149,48 +148,44 @@ class Processing:
         print(data)
         return data
 
-    def dummy_sales(self):
-        with open('reservation/data/dummydummy.csv', newline='', encoding='utf8') as f:
-            data_reader = csv.DictReader(f)
-            for row in data_reader:
-                # plane_unit = Price.objects.filter(category_id__in=row['plane'], category='plane').aggregate(Sum('price'))['price__sum']
-                plane_unit = Price.objects.filter(category_id__in=row.plane, category='plane')
-                print(type(plane_unit))
-                people = row['people']
-                plane_price = plane_unit * people
-                acc_unit = Price.objects.filter(category='accommodation', category_id=row['acc']).values()[0]['price']
-                day = row['day']
-                acc_price = acc_unit * day
-                # act = []
-                # [act.append(int(i)) for i in row['activity']]
-                # print(act)
-                # act_unit = Price.objects.filter(category_id__in=[row['activity']], category='activity').aggregate(Sum('price'))['price__sum']
-                act_unit = Price.objects.filter(category_id__in=[row['activity']], category='activity')
-                print(act_unit)
-                reg_date = row['reg_date']
-                date = reg_date
-                price = plane_price + acc_price + act_unit
-                tax = int(price['price'] * 0.1)
-                subtotal = int(price + tax)
-                fees = int(subtotal * 0.2)
-                total_price = int(subtotal + fees)
-                jeju_schedule = row['id']
-                user = row['user']
-                keys = []
-                items = []
-                for i in [date, people, day, plane_unit, acc_unit, act_unit, plane_price, acc_price, price, tax,
-                          subtotal, fees, total_price, jeju_schedule, user]:
-                    for j in i:
-                        keys.append(j)
-                        items.append(i[j])
-                result = dict(zip(keys, items))
-                serializer = ReservationSerializer(data=result, partial=True)
-                return serializer
+    # def dummy_sales(self):
+    #     plane_unit = Pay.objects.filter(category_id__in=row.plane, category='plane')
+    #     print(type(plane_unit))
+    #     people = row['people']
+    #     plane_price = plane_unit * people
+    #     acc_unit = Price.objects.filter(category='accommodation', category_id=row['acc']).values()[0]['price']
+    #     day = row['day']
+    #     acc_price = acc_unit * day
+    #     # act = []
+    #     # [act.append(int(i)) for i in row['activity']]
+    #     # print(act)
+    #     # act_unit = Price.objects.filter(category_id__in=[row['activity']], category='activity').aggregate(Sum('price'))['price__sum']
+    #     act_unit = Price.objects.filter(category_id__in=[row['activity']], category='activity')
+    #     print(act_unit)
+    #     reg_date = row['reg_date']
+    #     date = reg_date
+    #     price = plane_price + acc_price + act_unit
+    #     tax = int(price['price'] * 0.1)
+    #     subtotal = int(price + tax)
+    #     fees = int(subtotal * 0.2)
+    #     total_price = int(subtotal + fees)
+    #     jeju_schedule = row['id']
+    #     user = row['user']
+    #     keys = []
+    #     items = []
+    #     for i in [date, people, day, plane_unit, acc_unit, act_unit, plane_price, acc_price, price, tax,
+    #               subtotal, fees, total_price, jeju_schedule, user]:
+    #         for j in i:
+    #             keys.append(j)
+    #             items.append(i[j])
+    #     result = dict(zip(keys, items))
+    #     serializer = ReservationSerializer(data=result, partial=True)
+    #     return serializer
 
-                # arr = []
-                # plane = Price.objects.filter(category='plane', category_id__in=[p]).values()
-                #
-                # print(plane)
+        # arr = []
+        # plane = Price.objects.filter(category='plane', category_id__in=[p]).values()
+        #
+        # print(plane)
         # acc_unit = Price.objects.filter(category='accommodation', price='price')
         # act_unit = Price.objects.filter(category='activity', price='price')
         # with open('reservation/data/dummy.csv', newline='', encoding='utf8') as f:
@@ -245,10 +240,10 @@ class Processing:
     #     df.to_csv(self.csvfile)
 
     def insert_test(self):
-        with open('user/data/sorry.csv', newline='', encoding='utf8') as f:
+        with open('reservation/data/dummy.csv', newline='', encoding='utf8') as f:
             data_reader = csv.DictReader(f)
             for row in data_reader:
-                a = Pay.objects.create(re_id=row['te_id'],
+                a = Pay.objects.create(re_id=row['id'],
                                        reg_date=row['reg_date'],
                                        user=row['user'],
                                        day=row['day'],
