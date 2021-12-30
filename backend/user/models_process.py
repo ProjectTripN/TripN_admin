@@ -1,5 +1,4 @@
 import csv
-
 import pandas as pd
 from django.db.models import Count
 from common.models import ValueObject, Reader, Printer
@@ -43,18 +42,19 @@ class Processing:
                 print(f'1 >>>> {users}')
         print('USER DATA UPLOADED SUCCESSFULLY!')
 
-    def count_mbti(self):
-        mbti = User.objects.raw("select user_id, mbti, gender, count(gender) as mbti_count from tripn_mariadb.users group by mbti, gender order by mbti_count desc")
-        mbti = {row.mbti: row.mbti_count for row in mbti}
-        df = pd.DataFrame(index=mbti, columns=['여', '남'])
-        print(df)
+    # def count_mbti(self):
+    #     mbti = User.objects.raw("select user_id, mbti, count(gender) as mbti_count from tripn_mariadb.users group by mbti order by mbti_count desc")
+    #     mbti = {row.mbti: row.mbti_count for row in mbti}
+    #     print(type(mbti))
+        # df = pd.DataFrame(mbti, index=['여', '남'])
+        # print(df)
 
         # gender = User.objects.raw("select user_id, mbti, gender, count(mbti), count(gender) as gender_count from tripn_mariadb.users group by gender order by gender_count, gender desc")
 
         # gender = {row.gender: row.gender_count for row in gender}
         # print(mbti)
         # print(gender)
-        return mbti
+        # return mbti
         # ls = [{"istj":0}, {"istp":0}, {"isfj":0}, {"isfp":0}, {"intj":0}, {"intp":0}, {"infj":0}, {"infp":0}, {"estj":0},
         #       {"estp":0}, {"esfj":0}, {"esfp":0}, {"entj":0}, {"entp":0}, {"enfj":0}, {"enfp":0}]
         # test = []

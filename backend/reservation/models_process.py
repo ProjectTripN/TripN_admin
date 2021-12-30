@@ -139,3 +139,8 @@ class Processing:
                    f'acc {p}': Reservation.objects.filter(reg_date__month=p).aggregate(Sum('acc_price'))['acc_price__sum'],
                    f'activity {p}': Reservation.objects.filter(reg_date__month=p).aggregate(Sum('act_unit'))['act_unit__sum']} for p in range(1, 13)]
         return result
+
+    def recent(self):
+        data = Reservation.objects.order_by('id')[5:].values()
+        print(data)
+        return data

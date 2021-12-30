@@ -56,3 +56,11 @@ def profit_6month(request):
 def count_res(request):
     count_data = Processing().count()
     return JsonResponse(data=count_data, safe=False)
+
+
+@api_view(['GET'])
+@parser_classes([JSONParser])
+def recent(request):
+    result = Processing().recent()
+    recent_data = ReservationSerializer(result, many=True).data
+    return JsonResponse(data=recent_data, safe=False)

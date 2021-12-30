@@ -3,6 +3,7 @@ from .models import Reservation as reservation
 
 
 class ReservationSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
     reg_date = serializers.DateField()
     people = serializers.IntegerField()
     day = serializers.IntegerField()

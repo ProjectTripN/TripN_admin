@@ -8,5 +8,6 @@ urlpatterns = {
     url(r'count', views.count_res),
     url(r'month', views.profit_month),
     url(r'year', views.profit_year),
-    url(r'6month', views.profit_6month)
+    url(r'6month', views.profit_6month),
+    url(r'recent', views.recent),
 }

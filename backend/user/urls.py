@@ -3,5 +3,5 @@ from user import views
 
 urlpatterns = {
     url(r'insert', views.insert_data),
-    url(r'mbti', views.count_mbti),
+    # url(r'mbti', views.count_mbti),
 }
