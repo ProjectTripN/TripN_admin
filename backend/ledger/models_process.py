@@ -32,7 +32,7 @@ class Processing:
 
     def pre_sales(self):
         arr = []
-        for t in range(1, 11):
+        for t in range(1, 43):
             t = Reservation.objects.get(pk=t)
             total = t.total_price - t.tax
             price = t.price

@@ -141,6 +141,7 @@ class Processing:
         return result
 
     def recent(self):
-        data = Reservation.objects.order_by('id')[5:].values()
+        data = Reservation.objects.order_by('-reg_date')[:5].values()
+        data = data.filter('reg_date')
         print(data)
         return data
