@@ -4,7 +4,7 @@ from datetime import datetime
 from django.db.models import Count, Sum
 
 from price.models import Price
-from reservation.models import Reservation
+from reservation.models import Reservation, Pay
 from common.models import ValueObject, Reader, Printer
 from reservation.serializers import ReservationSerializer
 
@@ -150,28 +150,32 @@ class Processing:
         return data
 
     def dummy_sales(self):
-        with open('reservation/data/dummy.csv', newline='', encoding='utf8') as f:
+        with open('reservation/data/dummydummy.csv', newline='', encoding='utf8') as f:
             data_reader = csv.DictReader(f)
             for row in data_reader:
-                plane_unit = Price.objects.filter(category_id__in=(row['plane'][0], row['plane'][1]), category='plane').aggregate(Sum('price'))['price__sum']
+                # plane_unit = Price.objects.filter(category_id__in=row['plane'], category='plane').aggregate(Sum('price'))['price__sum']
+                plane_unit = Price.objects.filter(category_id__in=row.plane, category='plane')
+                print(type(plane_unit))
                 people = row['people']
                 plane_price = plane_unit * people
                 acc_unit = Price.objects.filter(category='accommodation', category_id=row['acc']).values()[0]['price']
                 day = row['day']
                 acc_price = acc_unit * day
-                act = []
-                [act.append(int(i)) for i in row['activity']]
-                print(act)
-                act_unit = Price.objects.filter(category_id__in=[row['activity'][0]], category='activity').aggregate(Sum('price'))['price__sum']
-                reg_date = {'reg_date': row['reg_date']}
-                date = {'reg_date': reg_date['reg_date'][:10]}
-                price = {'price': plane_price['plane_price'] + acc_price['acc_price'] + act_unit['act_unit']}
-                tax = {'tax': int(price['price'] * 0.1)}
-                subtotal = {'subtotal': int(price['price'] + tax['tax'])}
-                fees = {'fees': int(subtotal['subtotal'] * 0.2)}
-                total_price = {'total_price': int(subtotal['subtotal'] + fees['fees'])}
-                jeju_schedule = {'jeju_schedule': row['id']}
-                user = {'user': row['user']}
+                # act = []
+                # [act.append(int(i)) for i in row['activity']]
+                # print(act)
+                # act_unit = Price.objects.filter(category_id__in=[row['activity']], category='activity').aggregate(Sum('price'))['price__sum']
+                act_unit = Price.objects.filter(category_id__in=[row['activity']], category='activity')
+                print(act_unit)
+                reg_date = row['reg_date']
+                date = reg_date
+                price = plane_price + acc_price + act_unit
+                tax = int(price['price'] * 0.1)
+                subtotal = int(price + tax)
+                fees = int(subtotal * 0.2)
+                total_price = int(subtotal + fees)
+                jeju_schedule = row['id']
+                user = row['user']
                 keys = []
                 items = []
                 for i in [date, people, day, plane_unit, acc_unit, act_unit, plane_price, acc_price, price, tax,
@@ -182,8 +186,6 @@ class Processing:
                 result = dict(zip(keys, items))
                 serializer = ReservationSerializer(data=result, partial=True)
                 return serializer
-
-
 
                 # arr = []
                 # plane = Price.objects.filter(category='plane', category_id__in=[p]).values()
@@ -241,3 +243,18 @@ class Processing:
     #     df = pd.DataFrame(result, columns=['reg_date', 'people', 'day', 'plane_pr', 'acc_pr', 'act_pr', 'price', 'tax',
     #                                        'subtotal', 'fees', 'total_price', 'jeju_schedule_id'])
     #     df.to_csv(self.csvfile)
+
+    def insert_test(self):
+        with open('user/data/sorry.csv', newline='', encoding='utf8') as f:
+            data_reader = csv.DictReader(f)
+            for row in data_reader:
+                a = Pay.objects.create(re_id=row['te_id'],
+                                       reg_date=row['reg_date'],
+                                       user=row['user'],
+                                       day=row['day'],
+                                       people=row['people'],
+                                       plane=row['plane'],
+                                       acc=row['acc'],
+                                       activity=row['activity'])
+                print(f' 1 >>>> {a}')
+        print('Person DATA UPLOADED SUCCESSFULY!')
