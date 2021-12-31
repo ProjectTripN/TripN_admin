@@ -38,8 +38,8 @@ def upload_cost(request):
 
 @api_view(['GET'])
 @parser_classes([JSONParser])
-def sales(request, pk):
-    Processing().sales_process(pk)
+def sales(request):
+    Processing().sales_process()
     return JsonResponse({'SALES': 'SUCCESS'})
 
 
@@ -78,5 +78,8 @@ def month_cost(request):
 @api_view(['GET'])
 @parser_classes([JSONParser])
 def year_profit(request):
+    print('#################################')
     result = Processing().year_profit()
+    print('#################################')
+    print(result)
     return JsonResponse(data=result, safe=False)

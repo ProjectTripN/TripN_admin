@@ -143,8 +143,7 @@ class Processing:
         return result
 
     def recent(self):
-        data = Reservation.objects.order_by('-reg_date')[:5].values()
-        data = data.filter('reg_date')
+        data = Reservation.objects.order_by('-id')[:5].values()
         print(data)
         return data
 
@@ -203,4 +202,3 @@ class Processing:
         total = Reservation.objects.all().aggregate(Sum('total_price'))
         print(total)
         return total
-

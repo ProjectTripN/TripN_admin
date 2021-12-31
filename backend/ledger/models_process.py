@@ -21,18 +21,29 @@ class Processing:
         with open('ledger/data/2020_PL_3.csv', newline='', encoding='utf8') as f:
             data_reader = csv.DictReader(f)
             for row in data_reader:
-                # if not FinReports.objects.filter(category=row['항목명']).exists():
-                report = Ledger.objects.create(year=2020,
-                                               date='2020-12-31',
-                                               category=row['항목명'],
-                                               price=int(float(row['전기'])),
-                                               )
-                print(f'1 >>>> {report}')
+                report1 = Ledger.objects.create(year=2018,
+                                                date='2018-12-31',
+                                                category=row['항목명'],
+                                                price=int(float(row['전전전기'])),
+                                                )
+                print(f'1 >>>> {report1}')
+                report2 = Ledger.objects.create(year=2019,
+                                                date='2019-12-31',
+                                                category=row['항목명'],
+                                                price=int(float(row['전전기'])),
+                                                )
+                print(f'1 >>>> {report2}')
+                report3 = Ledger.objects.create(year=2020,
+                                                date='2020-12-31',
+                                                category=row['항목명'],
+                                                price=int(float(row['전기'])),
+                                                )
+                print(f'1 >>>> {report3}')
         print('USER DATA UPLOADED SUCCESSFULLY!')
 
     def pre_sales(self):
         arr = []
-        for t in range(1, 43):
+        for t in range(1, 3659):
             t = Reservation.objects.get(pk=t)
             total = t.total_price - t.tax
             price = t.price
@@ -53,36 +64,27 @@ class Processing:
         print(df)
         df.to_csv(self.csvfile)
 
-    def sales_process(self, s):
-        arr = []
-        t = Reservation.objects.get(pk=s)
-        total = t.total_price - t.tax  # 매출액
-        price = t.price                # 매출원가
-        date = t.reg_date              #
-        profit = total - price
-        arr.append(date)
-        arr.append('매출액')
-        arr.append(total)
-        arr.append(date)
-        arr.append('매출원가')
-        arr.append(price)
-        arr.append(date)
-        arr.append('매출총이익')
-        arr.append(profit)
-        # arr.append(date)
-        # arr.append('영업이익')
-        # arr.append(total)
-        n = 3
-        result = [arr[i * n:(i + 1) * n] for i in range((len(arr) + n - 1) // n)]
-        df = pd.DataFrame(result, columns=['date', 'category', 'price'])
+    def sales_process(self):
+        total_profit = [{f'영업이익': Ledger.objects.filter(date__year=2021, date__month=p, category='매출총이익').aggregate(Sum('price'))['price__sum']
+                                  - Ledger.objects.filter(date__year=2021, date__month=p, category='판매비와관리비').aggregate(Sum('price'))['price__sum']
+                                  - Ledger.objects.filter(date__year=2021, date__month=p, category='지급수수료').aggregate(Sum('price'))['price__sum']} for p in range(1, 13)]
+        df = pd.DataFrame(total_profit)
         print(df)
-        df.to_csv('ledger/data/get_sales.csv')
+        df.to_csv('ledger/data/get_profit.csv')
+        # with open('ledger/data/get_sales.csv', newline='', encoding='utf8') as f:
+        #     data_reader = csv.DictReader(f)
+        #     report = Ledger.objects.create(year=2021,
+        #                                    date='2021-12-31',
+        #                                    category='영업이익',
+        #                                    price=int(115991916),
+        #                                    )
+        #     print(f'1 >>>> {report}')
 
     def pre_cost(self):
         arr = []
 
         def create_price():
-            return random.randint(10000, 1000000)
+            return random.randint(10000, 500000)
 
         def create_month():
             month = random.randint(1, 12)
@@ -122,7 +124,7 @@ class Processing:
         result = [arr[i * n:(i + 1) * n] for i in range((len(arr) + n - 1) // n)]
         df = pd.DataFrame(result, columns=['date', 'category', 'price'])
         print(df)
-        df.to_csv('ledger/data/cost.csv')
+        df.to_csv('ledger/data/cost2.csv')
 
     def insert_sales(self):
         with open('ledger/data/sales.csv', newline='', encoding='utf8') as f:
@@ -159,17 +161,14 @@ class Processing:
     def year_profit(self):
         profit = [{f'월': f'{p}',
                    f'매출총이익': Ledger.objects.filter(date__year=2021, date__month=p, category='매출총이익').aggregate(Sum('price'))['price__sum'],
-                   f'영업이익': (Ledger.objects.filter(date__year=2021, date__month=p, category='매출총이익').aggregate(Sum('price'))['price__sum']
-                             - Ledger.objects.filter(date__year=2021, date__month=p, category='판매비와관리비').aggregate(Sum('price'))['price__sum']
-                             - Ledger.objects.filter(date__year=2021, date__month=p, category='지급수수료').aggregate(Sum('price'))['price__sum']),
+                   f'영업이익': Ledger.objects.filter(date__year=2021, date__month=p, category='영업이익').aggregate(Sum('price'))['price__sum'],
                    f'기타수익': Ledger.objects.filter(date__year=2021, date__month=p, category='기타수익').aggregate(Sum('price'))['price__sum'],
                    f'금융수익': Ledger.objects.filter(date__year=2021, date__month=p, category='금융수익').aggregate(Sum('price'))['price__sum'],
-                   f'당기순이익': Ledger.objects.filter(date__year=2021, date__month=p, category='당기순이익').aggregate(Sum('price'))['price__sum']} for p in range(1, 13)]
+                   f'당월순이익': Ledger.objects.filter(date__year=2021, date__month=p, category='매출총이익').aggregate(Sum('price'))['price__sum']
+                             - Ledger.objects.filter(date__year=2021, date__month=p, category='판매비와관리비').aggregate(Sum('price'))['price__sum']
+                             - Ledger.objects.filter(date__year=2021, date__month=p, category='지급수수료').aggregate(Sum('price'))['price__sum']
+                             + Ledger.objects.filter(date__year=2021, date__month=p, category='기타수익').aggregate(Sum('price'))['price__sum']
+                             - Ledger.objects.filter(date__year=2021, date__month=p, category='기타비용').aggregate(Sum('price'))['price__sum']
+                             + Ledger.objects.filter(date__year=2021, date__month=p, category='금융수익').aggregate(Sum('price'))['price__sum']
+                             - Ledger.objects.filter(date__year=2021, date__month=p, category='금융비용').aggregate(Sum('price'))['price__sum']} for p in range(1, 13)]
         return profit
-
-# - Ledger.objects.filter(date__year=2021, date__month=p, category='판매비와관리비').aggregate(Sum('price'))['price__sum']
-#                               - Ledger.objects.filter(date__year=2021, date__month=p, category='지급수수료').aggregate(Sum('price'))['price__sum']
-#                               + Ledger.objects.filter(date__year=2021, date__month=p, category='기타수익').aggregate(Sum('price'))['price__sum']
-#                               - Ledger.objects.filter(date__year=2021, date__month=p, category='기타비용').aggregate(Sum('price'))['price__sum']
-#                               + Ledger.objects.filter(date__year=2021, date__month=p, category='금융수익').aggregate(Sum('price'))['price__sum']
-#                               - Ledger.objects.filter(date__year=2021, date__month=p, category='금융비용').aggregate(Sum('price'))['price__sum']
