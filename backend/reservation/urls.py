@@ -12,4 +12,5 @@ urlpatterns = {
     url(r'recent', views.recent),
     url(r'dummy', views.dummy_sales),
     url(r'test', views.insert_test),
+    url(r'sum', views.sum),
 }

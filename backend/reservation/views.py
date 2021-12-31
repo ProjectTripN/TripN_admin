@@ -69,12 +69,19 @@ def recent(request):
 @api_view(['GET'])
 @parser_classes([JSONParser])
 def dummy_sales(request):
-    result = Processing().dummy_sales()
-    return JsonResponse(data=result, safe=False)
+    Processing().dummy_sales()
+    return Response({'SUCCESS'})
 
 
 @api_view(['GET'])
 @parser_classes([JSONParser])
 def insert_test(request):
     Processing().insert_test()
+    return Response({'SUCCESS'})
+
+
+@api_view(['GET'])
+@parser_classes([JSONParser])
+def sum(request):
+    Processing().sum()
     return Response({'SUCCESS'})

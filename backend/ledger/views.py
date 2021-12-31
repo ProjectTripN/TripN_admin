@@ -71,7 +71,7 @@ def show_6month_cost(request):
 @parser_classes([JSONParser])
 def month_cost(request):
     result = Processing().show_cost()
-    result = result[12]
+    result = result[11]
     return JsonResponse(data=result, safe=False)
 
 

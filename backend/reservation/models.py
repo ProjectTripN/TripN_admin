@@ -13,6 +13,7 @@ class Reservation(models.Model):
     acc_unit = models.IntegerField()
     acc_price = models.IntegerField()
     act_unit = models.IntegerField()
+    act_price = models.IntegerField()
     price = models.IntegerField()
     tax = models.IntegerField()
     subtotal = models.IntegerField()
