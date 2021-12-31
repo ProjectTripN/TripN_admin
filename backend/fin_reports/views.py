@@ -3,6 +3,7 @@ from rest_framework.parsers import JSONParser
 from rest_framework.decorators import api_view, parser_classes
 from fin_reports.models import FinReports
 from fin_reports.models_data import DbUploader
+from fin_reports.models_process import ReportProcess
 from fin_reports.serializers import FinReportsSerializer
 
 
@@ -21,6 +22,12 @@ def show_fin_reports(request):
     print(f'hello : {request.data}')
     fin_reports_2020 = FinReports.objects.filter(year__in=['2020'], category__in=c)
     # fin_reports_2021 = FinReports.objects.filter(year__in=['2021'], category__in=c)
-
     fin_reports_data = FinReportsSerializer(fin_reports_2020, many=True).data
     return JsonResponse(data=fin_reports_data, safe=False)
+
+
+@api_view(['GET'])
+@parser_classes([JSONParser])
+def fin_reports(request):
+    ReportProcess().make_report()
+    return JsonResponse({'ReportProcess': 'SUCCESS'})

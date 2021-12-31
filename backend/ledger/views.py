@@ -1,11 +1,9 @@
-import datetime
 from django.db.models import Sum
 from django.http import JsonResponse
 from rest_framework.parsers import JSONParser
 from rest_framework.decorators import api_view, parser_classes
 from ledger.models import Ledger
 from ledger.models_process import Processing
-from ledger.serializer import LedgerSerializer
 
 
 @api_view(['GET'])
