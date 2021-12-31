@@ -7,7 +7,7 @@ class FinReports(models.Model):
     year = models.IntegerField()
     category = models.TextField()
     price = models.BigIntegerField([MinValueValidator(1), MaxValueValidator(100)])
-    ledger = models.ForeignKey(Ledger, on_delete=models.CASCADE)
+    ledger = models.ForeignKey(Ledger, on_delete=models.CASCADE, null=True)
 
     class Meta:
         db_table = 'fin_reports'

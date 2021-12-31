@@ -20,7 +20,7 @@ class DbUploader:
         self.insert_fin_report()
 
     def insert_fin_report(self):
-        ledger = Ledger.objects.filter(year=2021)
+        ledger = Ledger.objects.filter(year=2020)
         ledger = LedgerSerializer(ledger, many=True).data
         for row in ledger:
             print(row)

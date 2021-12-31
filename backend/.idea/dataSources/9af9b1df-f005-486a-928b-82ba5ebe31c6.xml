@@ -1573,7 +1573,6 @@ model</ColNames>
     <column id="437" parent="343" name="ledger_id">
       <Position>5</Position>
       <DataType>bigint(20)|0s</DataType>
-      <NotNull>1</NotNull>
     </column>
     <index id="438" parent="343" name="fin_reports_ledger_id_7c8dbe0e_fk_ledger_id">
       <ColNames>ledger_id</ColNames>
