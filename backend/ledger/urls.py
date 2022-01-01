@@ -13,4 +13,5 @@ urlpatterns = {
     url(r'year_profit', views.year_profit),
     # url(r'sales/(?P<pk>\w{0,50})$', views.sales),
     url(r'sales', views.sales),
+    url(r'insert', views.insert),
 }

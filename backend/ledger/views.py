@@ -81,3 +81,10 @@ def year_profit(request):
     print('#################################')
     print(result)
     return JsonResponse(data=result, safe=False)
+
+
+@api_view(['GET'])
+@parser_classes([JSONParser])
+def insert(request):
+    Processing().insert()
+    return JsonResponse({'insert': 'SUCCESS'})

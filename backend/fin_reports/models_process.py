@@ -16,25 +16,26 @@ from ledger.models import Ledger
 
 class ReportProcess:
     def make_report(self):
-        sales = Ledger.objects.filter(date__year=2021, category='매출액').aggregate(Sum('price'))['sales_sum']
-        print(sales)
-        cost_of_sales = Ledger.objects.filter(date__year=2021, category='매출원가').aggregate(Sum('price'))['cost_of_sales']
-        print(cost_of_sales)
-        gross_profit = Ledger.objects.filter(date__year=2021, category='매출총이익').aggregate(Sum('price'))['gross_profit']
-        print(gross_profit)
-        selling_expenses = Ledger.objects.filter(date__year=2021, category='판매비와관리비').aggregate(Sum('price'))['selling_expenses']
-        print(selling_expenses)
-        fees = Ledger.objects.filter(date__year=2021, category='지급수수료').aggregate(Sum('price'))['fees']
-        print(fees)
-        operating_income = Ledger.objects.filter(date__year=2021, category='영업이익').aggregate(Sum('price'))['operating_income']
-        print(operating_income)
-        other_income = Ledger.objects.filter(date__year=2021, category='기타수익').aggregate(Sum('price'))['other_income']
-        print(other_income)
-        other_loss = Ledger.objects.filter(date__year=2021, category='기타비용').aggregate(Sum('price'))['other_loss']
-        print(other_loss)
-        financial_income = Ledger.objects.filter(date__year=2021, category='금융수익').aggregate(Sum('price'))['financial_income']
-        print(financial_income)
-        financial_loss = Ledger.objects.filter(date__year=2021, category='금융비용').aggregate(Sum('price'))['financial_loss']
-        print(financial_loss)
-        # net_income = operating_income['operating_income'] + other_income[''] - other_loss[''] + financial_income[''] - financial_loss['']
+        sales = Ledger.objects.filter(date__year=2021, category='매출액').aggregate(Sum('price'))['price__sum']
+        print({'sales': sales})
+        cost_of_sales = Ledger.objects.filter(date__year=2021, category='매출원가').aggregate(Sum('price'))['price__sum']
+        print({'cost_of_sales': cost_of_sales})
+        gross_profit = Ledger.objects.filter(date__year=2021, category='매출총이익').aggregate(Sum('price'))['price__sum']
+        print({'gross_profit': gross_profit})
+        selling_expenses = Ledger.objects.filter(date__year=2021, category='판매비와관리비').aggregate(Sum('price'))['price__sum']
+        print({'selling_expenses': selling_expenses})
+        fees = Ledger.objects.filter(date__year=2021, category='지급수수료').aggregate(Sum('price'))['price__sum']
+        print({'fees': fees})
+        operating_income = Ledger.objects.filter(date__year=2021, category='영업이익').aggregate(Sum('price'))['price__sum']
+        print({'operating_income': operating_income})
+        other_income = Ledger.objects.filter(date__year=2021, category='기타수익').aggregate(Sum('price'))['price__sum']
+        print({'other_income': other_income})
+        other_loss = Ledger.objects.filter(date__year=2021, category='기타비용').aggregate(Sum('price'))['price__sum']
+        print({'other_loss': other_loss})
+        financial_income = Ledger.objects.filter(date__year=2021, category='금융수익').aggregate(Sum('price'))['price__sum']
+        print({'financial_income': financial_income})
+        financial_loss = Ledger.objects.filter(date__year=2021, category='금융비용').aggregate(Sum('price'))['price__sum']
+        print({'financial_loss': financial_loss})
+
+        # net_income = operating_income['price__sum'] + other_income['price__sum'] - other_loss['price__sum'] + financial_income['price__sum'] - financial_loss['price__sum']
         # print(net_income)

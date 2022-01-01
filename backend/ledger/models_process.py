@@ -149,6 +149,14 @@ class Processing:
                 print(f'2 >>>> {ledger}')
             print('DATA UPLOADED SUCCESSFULLY!')
 
+    def insert(self):
+        ledger = Ledger.objects.create(date='2021-12-31',
+                                       year=2021,
+                                       category='판매비와관리비',
+                                       price=3300000)
+        print(f'2 >>>> {ledger}')
+    print('DATA UPLOADED SUCCESSFULLY!')
+
     def show_cost(self):
         cost = [{f'월': f'{p}',
                  f'매출원가': Ledger.objects.filter(date__year=2021, date__month=p, category='매출원가').aggregate(Sum('price'))['price__sum'],
