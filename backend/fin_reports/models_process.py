@@ -22,7 +22,7 @@ class ReportProcess:
                           columns=['price'])
         i = FinReports.objects.filter(year=2021, category__in=['영업이익', '기타수익', '기타비용', '금융수익', '금융비용']).values()
         a = i.filter(category='영업이익')
-        a.values()
+        print(a)
 
     #     fin_reports = FinReports.objects.create(year=2021,
     #                                             category='금융비용',
