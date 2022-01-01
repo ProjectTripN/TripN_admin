@@ -62,6 +62,7 @@ def report_process(request):
 def show_6month_cost(request):
     result = Processing().show_cost()
     result = result[6:12]
+    print(result)
     return JsonResponse(data=result, safe=False)
 
 
