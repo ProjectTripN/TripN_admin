@@ -33,9 +33,10 @@ def get_price(request):
     day = {'day': dic['day']}
     acc_price = {'acc_price': acc_unit['acc_unit'] * day['day']}
     act_unit = {'act_unit': Price.objects.filter(category_id__in=dic['activity'], category='activity').aggregate(Sum('price'))['price__sum']}
+    act_price = {'act_price': act_unit['act_unit'] * people['people']}
     reg_date = {'reg_date': dic['reg_date']}
     date = {'reg_date': reg_date['reg_date'][:10]}
-    price = {'price': plane_price['plane_price'] + acc_price['acc_price'] + act_unit['act_unit']}
+    price = {'price': plane_price['plane_price'] + acc_price['acc_price'] + act_price['act_price']}
     tax = {'tax': int(price['price'] * 0.1)}
     subtotal = {'subtotal': int(price['price'] + tax['tax'])}
     fees = {'fees': int(subtotal['subtotal'] * 0.2)}
@@ -44,14 +45,14 @@ def get_price(request):
     user = {'user': dic['user']}
     keys = []
     items = []
-    for i in [date, people, day, plane_unit, acc_unit, act_unit, plane_price, acc_price, price, tax, subtotal, fees, total_price, jeju_schedule, user]:
+    for i in [date, people, day, plane_unit, acc_unit, act_unit, plane_price, acc_price, act_price, price, tax, subtotal, fees, total_price, jeju_schedule, user]:
         for j in i:
             keys.append(j)
             items.append(i[j])
     result = dict(zip(keys, items))
     serializer = ReservationSerializer(data=result, partial=True)
-    if serializer.is_valid():
-        serializer.save()
+    # if serializer.is_valid():
+    #     serializer.save()
     return JsonResponse(data=result, safe=False)
 
 

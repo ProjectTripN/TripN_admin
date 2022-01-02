@@ -22,7 +22,7 @@ def show_fin_reports(request):
     print(f'hi : {request}')
     print(f'hello : {request.data}')
     fin_reports_2020 = FinReports.objects.filter(year__in=['2020'], category__in=c)
-    # fin_reports_2021 = FinReports.objects.filter(year__in=['2021'], category__in=c)
+    # fin_reports_2021 = FinReports.objects.filter(year__in=['2021'], category__in=c1)
     fin_reports_data = FinReportsSerializer(fin_reports_2020, many=True).data
     return JsonResponse(data=fin_reports_data, safe=False)
 

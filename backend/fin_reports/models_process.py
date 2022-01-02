@@ -1,4 +1,3 @@
-import csv
 import pandas as pd
 from django.db.models import Sum
 from fin_reports.models import FinReports
@@ -18,11 +17,9 @@ class ReportProcess:
         financial_income = Ledger.objects.filter(date__year=2021, category='금융수익').aggregate(Sum('price'))['price__sum']
         financial_loss = Ledger.objects.filter(date__year=2021, category='금융비용').aggregate(Sum('price'))['price__sum']
         df = pd.DataFrame((sales, cost_of_sales, gross_profit, selling_expenses, fees, operating_income, other_income,
-                           other_loss, financial_income, financial_loss),
-                          columns=['price'])
+                           other_loss, financial_income, financial_loss), columns=['price'])
         i = FinReports.objects.filter(year=2021, category__in=['영업이익', '기타수익', '기타비용', '금융수익', '금융비용']).values()
-        a = i.filter(category='영업이익')
-        print(a)
+
 
     #     fin_reports = FinReports.objects.create(year=2021,
     #                                             category='금융비용',
