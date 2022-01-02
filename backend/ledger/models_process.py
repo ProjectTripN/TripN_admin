@@ -66,8 +66,8 @@ class Processing:
 
     def sales_process(self):
         total_profit = [{f'영업이익': Ledger.objects.filter(date__year=2021, date__month=p, category='매출총이익').aggregate(Sum('price'))['price__sum']
-                                  - Ledger.objects.filter(date__year=2021, date__month=p, category='판매비와관리비').aggregate(Sum('price'))['price__sum']
-                                  - Ledger.objects.filter(date__year=2021, date__month=p, category='지급수수료').aggregate(Sum('price'))['price__sum']} for p in range(1, 13)]
+                                   - Ledger.objects.filter(date__year=2021, date__month=p, category='판매비와관리비').aggregate(Sum('price'))['price__sum']
+                                   - Ledger.objects.filter(date__year=2021, date__month=p, category='지급수수료').aggregate(Sum('price'))['price__sum']} for p in range(1, 13)]
         df = pd.DataFrame(total_profit)
         print(df)
         df.to_csv('ledger/data/get_profit.csv')
@@ -173,10 +173,10 @@ class Processing:
                    f'기타수익': Ledger.objects.filter(date__year=2021, date__month=p, category='기타수익').aggregate(Sum('price'))['price__sum'],
                    f'금융수익': Ledger.objects.filter(date__year=2021, date__month=p, category='금융수익').aggregate(Sum('price'))['price__sum'],
                    f'당월순이익': Ledger.objects.filter(date__year=2021, date__month=p, category='매출총이익').aggregate(Sum('price'))['price__sum']
-                             - Ledger.objects.filter(date__year=2021, date__month=p, category='판매비와관리비').aggregate(Sum('price'))['price__sum']
-                             - Ledger.objects.filter(date__year=2021, date__month=p, category='지급수수료').aggregate(Sum('price'))['price__sum']
-                             + Ledger.objects.filter(date__year=2021, date__month=p, category='기타수익').aggregate(Sum('price'))['price__sum']
-                             - Ledger.objects.filter(date__year=2021, date__month=p, category='기타비용').aggregate(Sum('price'))['price__sum']
-                             + Ledger.objects.filter(date__year=2021, date__month=p, category='금융수익').aggregate(Sum('price'))['price__sum']
-                             - Ledger.objects.filter(date__year=2021, date__month=p, category='금융비용').aggregate(Sum('price'))['price__sum']} for p in range(1, 13)]
+                              - Ledger.objects.filter(date__year=2021, date__month=p, category='판매비와관리비').aggregate(Sum('price'))['price__sum']
+                              - Ledger.objects.filter(date__year=2021, date__month=p, category='지급수수료').aggregate(Sum('price'))['price__sum']
+                              + Ledger.objects.filter(date__year=2021, date__month=p, category='기타수익').aggregate(Sum('price'))['price__sum']
+                              - Ledger.objects.filter(date__year=2021, date__month=p, category='기타비용').aggregate(Sum('price'))['price__sum']
+                              + Ledger.objects.filter(date__year=2021, date__month=p, category='금융수익').aggregate(Sum('price'))['price__sum']
+                              - Ledger.objects.filter(date__year=2021, date__month=p, category='금융비용').aggregate(Sum('price'))['price__sum']} for p in range(1, 13)]
         return profit
