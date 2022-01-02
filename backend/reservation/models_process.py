@@ -26,7 +26,6 @@ class Processing:
             today = datetime(year=2021, month=12, day=31).month
             count = Reservation.objects.filter(reg_date__month=today - i).aggregate(Count('id'))
             count_data[f'{i}번째'] = [f'{today - i}월', count['id__count']]
-            # print(list(count_data.values()))
         count = count_data
         print(count)
         return count
