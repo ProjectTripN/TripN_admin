@@ -14,10 +14,6 @@ def pre_price(request):
     return JsonResponse({'PRICE': 'SUCCESS'})
 
 
-# unit = dic['acc_id'].values('standard_number')
-    # print(people / unit)   math.ceil(people / unit)
-
-
 @api_view(['POST'])
 @parser_classes([JSONParser])
 def get_price(request):
@@ -54,10 +50,3 @@ def get_price(request):
     # if serializer.is_valid():
     #     serializer.save()
     return JsonResponse(data=result, safe=False)
-
-
-@api_view(['GET'])
-@parser_classes([JSONParser])
-def count_random(request):
-    Processing().count_random()
-    return JsonResponse({'count': 'SUCCESS'})
