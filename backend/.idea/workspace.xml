@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbc6e459-6875-4cfb-9bdf-a0c48c722e5b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/reservation/tests.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +63,7 @@
       <recent name="C:\Users\bitcamp\winter-django-cuda\back-end\ledger" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bitcamp\Desktop\TripN_admin\backend" />
       <recent name="C:\Users\bitcamp\Desktop\TripN_admin\backend\price\data" />
       <recent name="C:\Users\bitcamp\Desktop\TripN_admin\backend\ledger\data" />
       <recent name="C:\Users\bitcamp\winter-django-cuda\back-end\reservation\data" />
@@ -253,6 +256,7 @@
       <workItem from="1641255220250" duration="197000" />
       <workItem from="1641256936870" duration="7351000" />
       <workItem from="1641514150971" duration="5429000" />
+      <workItem from="1641622140390" duration="1857000" />
     </task>
     <servers />
   </component>
